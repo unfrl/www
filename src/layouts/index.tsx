@@ -159,7 +159,7 @@ class MainLayout extends React.Component<any, any> {
             </Hidden>
           </div>
         </AppBar>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           {children}
         </Container>
       </MuiThemeProvider>
@@ -217,24 +217,3 @@ class MainLayout extends React.Component<any, any> {
 }
 
 export default withStyles(styles)(MainLayout)
-
-// const MainLayout: React.FC = ({ children }) => (
-//   <MuiThemeProvider theme={theme}>
-//     <CssBaseline />
-//     <div
-//       style={{
-//         margin: `0 auto`,
-//         marginBottom: rhythm(1.5),
-//         marginTop: rhythm(1.5),
-//         maxWidth: 650,
-//         paddingLeft: rhythm(3 / 4),
-//         paddingRight: rhythm(3 / 4),
-//       }}
-//     >
-//       <h2>HELLO!!!!</h2>
-//       {children}
-//     </div>
-//   </MuiThemeProvider>
-// )
-
-// export default MainLayout

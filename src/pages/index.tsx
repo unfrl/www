@@ -5,7 +5,7 @@ import { withStyles, Theme } from '@material-ui/core/styles';
 import BuildIcon from '@material-ui/icons/Build';
 import WebIcon from '@material-ui/icons/Web';
 import MobileIcon from '@material-ui/icons/MobileFriendly';
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Paper, IconButton } from "@material-ui/core";
 import { ImageTransition, PageHeader } from "../components";
 
 import polestarMobile from '../assets/polestar-mobile.png';
@@ -97,37 +97,37 @@ class IndexPage extends React.Component<IndexPageProps> {
             </Grid>
           </Grid>
 
-          {/* <Paper className={classes.card}>
-          <Grid container spacing={24}>
-            <Grid item xs={12} sm={6}>
-              <div className={classes.services}>
-                {
-                  services.map((service, index) => {
-                    const { Icon, Title, Link } = service;
-                    return (
-                      <Grid item xs key={index} className={classes.serviceItem}>
-                        <IconButton href={Link} color="secondary">
-                          <Icon fontSize="large" />
-                        </IconButton>
-                        <Typography variant="caption" className={classes.serviceTitle}>
-                          {Title}
-                        </Typography>
-                      </Grid>
-                    )
-                  })
-                }
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="h5" className={classes.cardTitle}>
-                What We Do
+          <Paper className={classes.card}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                <div className={classes.services}>
+                  {
+                    services.map((service, index) => {
+                      const { Icon, Title, Link } = service;
+                      return (
+                        <Grid item xs key={index} className={classes.serviceItem}>
+                          <IconButton href={Link} color="secondary">
+                            <Icon fontSize="large" />
+                          </IconButton>
+                          <Typography variant="caption" className={classes.serviceTitle}>
+                            {Title}
+                          </Typography>
+                        </Grid>
+                      )
+                    })
+                  }
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h5" className={classes.cardTitle}>
+                  What We Do
                             </Typography>
-              <Typography className={classes.cardDescription}>
-                Blah blah blah...
+                <Typography className={classes.cardDescription}>
+                  Blah blah blah...
                             </Typography>
+              </Grid>
             </Grid>
-          </Grid>
-        </Paper> */}
+          </Paper>
         </div>
       </MainLayout>
     )
