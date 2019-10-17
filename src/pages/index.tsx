@@ -13,25 +13,25 @@ import polestarMobile from '../assets/polestar-mobile.png';
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
 interface IndexPageProps {
-  data: {
-    site: {
-      siteMetadata: {
-        siteName: string
-      }
-    }
-  },
+  // data: {
+  //   site: {
+  //     siteMetadata: {
+  //       siteName: string
+  //     }
+  //   }
+  // },
   classes: any
 }
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        siteName
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query IndexQuery {
+//     site {
+//       siteMetadata {
+//         siteName
+//       }
+//     }
+//   }
+// `
 
 const styles: any = (theme: Theme) => ({
   root: {
