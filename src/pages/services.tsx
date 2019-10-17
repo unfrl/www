@@ -54,8 +54,8 @@ class Services extends React.Component<any, any> {
                                     subheader="The future is web!" />
                                 <div className={classes.cardContent}>
                                     <CardContent>
-                                        Lorem ipsum dolor amet mustache neutra hammock, man bun DIY disrupt asymmetrical cronut. Meh waistcoat iceland cray humblebrag. Palo santo kickstarter trust fund taxidermy, pickled listicle ramps street art gluten-free leggings fixie. Neutra pop-up +1 snackwave leggings ugh, succulents lyft organic kickstarter salvia activated charcoal glossier flexitarian.
-                            </CardContent>
+                                        Due to the increasing capabilities of browsers Web Apps are now able to solve more problems than ever before. One of the major perks of web apps is that customers can get a running instance of your product just by navigating to a page, no installation necessary. Furthermore technologies like Electron and Progressive Web Apps (PWAs) have made it possible leverage the benefits of Web Apps in a more traditional feeling package. Using web-tech to build your app is one of the easiest ways to maintain a high level of agility as well as ensuring your clients are always using the latest version of your app without annoying updates that interrupt their productivity.
+                                    </CardContent>
                                     {!fullSize &&
                                         <CardMedia
                                             component="img"
