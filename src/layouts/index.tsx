@@ -88,7 +88,6 @@ const styles: any = (theme: Theme) => ({
 
 const links = [
   { to: '/services', title: 'Services' },
-  { to: '/work', title: 'Work' },
   { to: '/process', title: 'Process' },
   { to: '/about', title: 'About' },
 ]

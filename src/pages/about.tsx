@@ -12,6 +12,9 @@ import dreamTeam from '../assets/dreamTeam.jpg';
 import { CardHeader, Card, CardContent } from '@material-ui/core';
 
 const styles: any = (theme: Theme) => ({
+    root: {
+        flexGrow: 1
+    },
     header: {
         width: '100%',
         textAlign: 'center',
@@ -27,8 +30,7 @@ const styles: any = (theme: Theme) => ({
     },
     teamProfile: {
         padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary
+        textAlign: 'center'
     },
     avatar: {
         height: 50,
@@ -54,9 +56,11 @@ class About extends React.Component<any, any> {
         const { classes } = this.props;
         return (
             <MainLayout>
-                <Grid container>
+                <div className={classes.root}>
                     <PageHeader title="About" />
-                    <Grid item md={12} className={classes.bottomMargin}>
+                </div>
+                <Grid container spacing={3}>
+                    <Grid item sm={12} className={classes.bottomMargin}>
                         <Card>
                             <CardHeader
                                 title="We're a Co-op!"
