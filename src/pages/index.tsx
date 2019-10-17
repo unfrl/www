@@ -1,11 +1,11 @@
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import * as React from "react"
 import MainLayout from "../layouts"
 import { withStyles, Theme } from '@material-ui/core/styles';
 import BuildIcon from '@material-ui/icons/Build';
 import WebIcon from '@material-ui/icons/Web';
 import MobileIcon from '@material-ui/icons/MobileFriendly';
-import { Grid, Typography, Paper, IconButton } from "@material-ui/core";
+import { Grid, Typography, Paper, IconButton, Button } from "@material-ui/core";
 import { ImageTransition, PageHeader } from "../components";
 
 import polestarMobile from '../assets/polestar-mobile.png';
@@ -69,9 +69,9 @@ const styles: any = (theme: Theme) => ({
 });
 
 const services = [
-  { Title: 'Full Stack', Icon: BuildIcon, Link: 'services#cross-platform' },
-  { Title: 'Web Apps', Icon: WebIcon, Link: 'services#web' },
-  { Title: 'Mobile Apps', Icon: MobileIcon, Link: 'services#mobile' }
+  { Title: 'Full Stack', Icon: BuildIcon, Destination: 'services#cross-platform' },
+  { Title: 'Web Apps', Icon: WebIcon, Destination: 'services#web' },
+  { Title: 'Mobile Apps', Icon: MobileIcon, Destination: 'services#mobile' }
 ];
 
 class IndexPage extends React.Component<IndexPageProps> {
@@ -103,12 +103,12 @@ class IndexPage extends React.Component<IndexPageProps> {
                 <div className={classes.services}>
                   {
                     services.map((service, index) => {
-                      const { Icon, Title, Link } = service;
+                      const { Icon, Title, Destination } = service;
                       return (
                         <Grid item xs key={index} className={classes.serviceItem}>
-                          <IconButton href={Link} color="secondary">
+                          <Button color="secondary" onClick={() => { navigate(Destination) }}>
                             <Icon fontSize="large" />
-                          </IconButton>
+                          </Button>
                           <Typography variant="caption" className={classes.serviceTitle}>
                             {Title}
                           </Typography>
