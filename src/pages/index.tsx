@@ -1,6 +1,6 @@
 import { graphql, navigate } from "gatsby"
 import * as React from "react"
-import MainLayout from "../layouts"
+import { MainLayout } from "../layouts"
 import { withStyles, Theme } from '@material-ui/core/styles';
 import BuildIcon from '@material-ui/icons/Build';
 import WebIcon from '@material-ui/icons/Web';

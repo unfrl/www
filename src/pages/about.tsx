@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 
-import MainLayout from "../layouts"
+import { MainLayout } from "../layouts"
 import { PageHeader, ImageTransition } from '../components';
 import dreamTeam from '../assets/dreamTeam.jpg';
 import { CardHeader, Card, CardContent } from '@material-ui/core';

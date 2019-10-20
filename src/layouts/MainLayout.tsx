@@ -94,7 +94,7 @@ const links = [
 
 const themeTypeValue = 'ThemeType';
 
-class MainLayout extends React.Component<any, any> {
+class _MainLayout extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -113,7 +113,11 @@ class MainLayout extends React.Component<any, any> {
   render() {
     const theme = createMuiTheme({
       palette: {
-        type: this.state.themeType
+        // primary: { "500" }
+        type: this.state.themeType,
+        // text: {
+        //   secondary: '#f00'
+        // }
       },
     });
 
@@ -215,4 +219,4 @@ class MainLayout extends React.Component<any, any> {
   }
 }
 
-export default withStyles(styles)(MainLayout)
+export const MainLayout = withStyles(styles)(_MainLayout);
