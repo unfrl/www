@@ -1,9 +1,10 @@
 import * as React from "react"
 import { MainLayout } from "../layouts"
+import { SEO } from "../components"
 
 export default () => (
   <MainLayout>
-    <h1>You are here!</h1>
-    <h2>But nothing found for you #404</h2>
+    <SEO title="404" />
+    <h1>You are here! But nothing else is... #404</h1>
   </MainLayout>
 )

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { MainLayout } from "../layouts"
-import { PageHeader, ImageTransition } from '../components';
+import { PageHeader, ImageTransition, SEO } from '../components';
 import { Theme, Card, CardHeader, CardContent, Grid, useMediaQuery, useTheme, CardMedia } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles';
 import webapp_img from '../assets/undraw_website.svg';
@@ -151,9 +151,10 @@ class Services extends React.Component<any, any> {
         const { classes } = this.props;
         return (
             <MainLayout>
+                <SEO title="Services" />
                 <div className={classes.root}>
                     <div>
-                        <PageHeader title="Services" subtitle="We make stuff thats good and whatnot" />
+                        <PageHeader title="Services" />
                     </div>
                     <this.RenderSections />
                 </div>

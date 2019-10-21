@@ -5,8 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
-import logo_dark from '../assets/logo-dark.png';
-import logo_light from '../assets/logo-light.png';
+import logo from '../assets/logo.png'
 import { ContactButton } from "../components";
 
 const styles: any = (theme: Theme) => ({
@@ -24,6 +23,7 @@ const styles: any = (theme: Theme) => ({
     paddingRight: 10,
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: -5
   },
   logo: {
@@ -64,9 +64,6 @@ const styles: any = (theme: Theme) => ({
   drawerLinkTitle: {
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(2)
-  },
-  themeButton: {
-    marginBottom: theme.spacing(2),
   },
   hamburgerNav: {
     marginRight: theme.spacing()
@@ -129,9 +126,9 @@ class _MainLayout extends React.Component<any, any> {
         <AppBar position="sticky" color="default">
           <div className={classes.headerContainer}>
             <Link to="/" className={classes.home}>
-              <img src={this.state.themeType === 'dark' ? logo_light : logo_dark} alt="KiwiLabs" className={classes.logo} />
+              <img src={logo} alt="KiwiLabs" className={classes.logo} />
               <Typography variant="h6" className={classes.company}>
-                KiwiLabs
+                Unfrl
               </Typography>
             </Link>
             <Hidden smDown={true}>

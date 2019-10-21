@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    siteName: `Unfrl`,
+    title: `Unfrl`,
+    description: `Unfrl brings your idea to life.`,
+    author: `Unfrl`,
+    publisher: `Unfrl`,
+    icon: 'src/assets/favicon.ico'
   },
   plugins: [
     `gatsby-plugin-typescript`,

@@ -2,9 +2,7 @@ import React from 'react'
 
 import { withStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
 import posed from 'react-pose';
-import { Link } from 'gatsby';
 
 const styles: any = (theme: Theme) => ({
     link: {
@@ -48,11 +46,9 @@ class ContactButton extends React.Component<any, any> {
         return (
             <div className={classes.linkContainer}>
                 <Hoverable className={classes.hover}>
-                    <Link to="/contact" className={classes.link}>
-                        <Button className={classes.callToAction} style={style || {}}>
-                            Contact
-                        </Button>
-                    </Link>
+                    <Button className={classes.callToAction} href="mailto:hello@unfrl.email" style={style || {}}>
+                        Contact
+                    </Button>
                 </Hoverable>
             </div>
         )

@@ -1,37 +1,21 @@
-import { graphql, navigate } from "gatsby"
+import { navigate } from "gatsby"
 import * as React from "react"
-import { MainLayout } from "../layouts"
 import { withStyles, Theme } from '@material-ui/core/styles';
 import BuildIcon from '@material-ui/icons/Build';
 import WebIcon from '@material-ui/icons/Web';
 import MobileIcon from '@material-ui/icons/MobileFriendly';
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 import { Grid, Typography, Paper, IconButton, Button } from "@material-ui/core";
-import { ImageTransition, PageHeader } from "../components";
 
+import { ImageTransition, PageHeader, SEO } from "../components";
+import { MainLayout } from "../layouts"
 import polestarMobile from '../assets/polestar-mobile.png';
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
 interface IndexPageProps {
-  // data: {
-  //   site: {
-  //     siteMetadata: {
-  //       siteName: string
-  //     }
-  //   }
-  // },
   classes: any
 }
-
-// export const pageQuery = graphql`
-//   query IndexQuery {
-//     site {
-//       siteMetadata {
-//         siteName
-//       }
-//     }
-//   }
-// `
 
 const styles: any = (theme: Theme) => ({
   root: {
@@ -69,9 +53,10 @@ const styles: any = (theme: Theme) => ({
 });
 
 const services = [
-  { Title: 'Full Stack', Icon: BuildIcon, Destination: 'services#cross-platform' },
   { Title: 'Web Apps', Icon: WebIcon, Destination: 'services#web' },
-  { Title: 'Mobile Apps', Icon: MobileIcon, Destination: 'services#mobile' }
+  { Title: 'Mobile Apps', Icon: MobileIcon, Destination: 'services#mobile' },
+  { Title: 'Desktop Apps', Icon: DesktopWindowsIcon, Destination: 'services#desktop' },
+  { Title: 'Full Stack', Icon: BuildIcon, Destination: 'services#cross-platform' }
 ];
 
 class IndexPage extends React.Component<IndexPageProps> {
@@ -80,17 +65,18 @@ class IndexPage extends React.Component<IndexPageProps> {
     const { classes } = this.props;
     return (
       <MainLayout>
+        <SEO title="Home" />
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <PageHeader title="What we do" />
               <Typography variant="body1" align="center" gutterBottom>
                 We provide custom software solutions for businesses of any size using the lastest in web & mobile technologies to ensure our customers, and yours, always have the best possible experience.
-                        </Typography>
+              </Typography>
 
               <Typography variant="body1" align="center" gutterBottom>
                 Our affordable services use modern design principles and processes to provide our customers with anything from small internal tools to large enterprise applications to web/mobile apps with huge user bases.
-                        </Typography>
+              </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <ImageTransition src={polestarMobile} />
@@ -120,11 +106,11 @@ class IndexPage extends React.Component<IndexPageProps> {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Typography variant="h5" className={classes.cardTitle}>
-                  What We Do
-                            </Typography>
+                  Any Project
+                </Typography>
                 <Typography className={classes.cardDescription}>
-                  Blah blah blah...
-                            </Typography>
+                  Deployed how you want it
+                </Typography>
               </Grid>
             </Grid>
           </Paper>
