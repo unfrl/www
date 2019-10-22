@@ -1,25 +1,25 @@
-import { navigate } from "gatsby"
-import * as React from "react"
-import { withStyles, Theme } from '@material-ui/core/styles';
-import BuildIcon from '@material-ui/icons/Build';
-import WebIcon from '@material-ui/icons/Web';
-import MobileIcon from '@material-ui/icons/MobileFriendly';
-import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
-import { Grid, Typography, Paper, Button, useTheme, useMediaQuery, BottomNavigation, BottomNavigationAction } from "@material-ui/core";
+import { navigate } from "gatsby";
+import * as React from "react";
+import { withStyles, Theme } from "@material-ui/core/styles";
+import BuildIcon from "@material-ui/icons/Build";
+import WebIcon from "@material-ui/icons/Web";
+import MobileIcon from "@material-ui/icons/MobileFriendly";
+import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
+import { Grid, Typography, Paper, Button, BottomNavigation, BottomNavigationAction, useTheme, useMediaQuery } from "@material-ui/core";
 
 import { ImageTransition, PageHeader, SEO } from "../components";
-import { MainLayout } from "../layouts"
-import polestarMobile from '../assets/polestar-mobile.png';
+import { MainLayout } from "../layouts";
+import polestarMobile from "../assets/polestar-mobile.png";
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
 interface IndexPageProps {
-  classes: any
+  classes: any;
 }
 
 const styles: any = (theme: Theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   card: {
     ...theme.mixins.gutters(),
@@ -27,41 +27,47 @@ const styles: any = (theme: Theme) => ({
     marginTop: theme.spacing(5),
   },
   cardTitle: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   cardDescription: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: theme.spacing(),
   },
   services: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   serviceItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   },
   serviceTitle: {
     marginTop: 2,
-    textAlign: 'center',
+    textAlign: "center",
+  },
+  bottomNav: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0
   }
 });
 
 const services = [
-  { Title: 'Web', Icon: WebIcon, Destination: 'services#web' },
-  { Title: 'Mobile', Icon: MobileIcon, Destination: 'services#mobile' },
-  { Title: 'Desktop', Icon: DesktopWindowsIcon, Destination: 'services#desktop' },
-  { Title: 'Full Stack', Icon: BuildIcon, Destination: 'services#cross-platform' }
+  { Title: "Web", Icon: WebIcon, Destination: "services#web" },
+  { Title: "Mobile", Icon: MobileIcon, Destination: "services#mobile" },
+  { Title: "Desktop", Icon: DesktopWindowsIcon, Destination: "services#desktop" },
+  { Title: "Full Stack", Icon: BuildIcon, Destination: "services#cross-platform" },
 ];
 
 class IndexPage extends React.Component<IndexPageProps> {
-  readonly hello = `Hello`
-  render() {
+  public render() {
     const { classes } = this.props;
     return (
       <MainLayout>
@@ -71,12 +77,17 @@ class IndexPage extends React.Component<IndexPageProps> {
             <Grid item xs={12} sm={6}>
               <PageHeader title="What we do" />
               <Typography variant="body1" align="center" gutterBottom>
-                We provide custom software solutions for businesses of any size using the lastest in web & mobile technologies to ensure our customers, and yours, always have the best possible experience.
-              </Typography>
+                We provide custom software solutions for businesses of any size
+                using the latest in web & mobile technologies to ensure our
+                customers, and yours, always have the best possible experience.
+                            </Typography>
 
               <Typography variant="body1" align="center" gutterBottom>
-                Our affordable services use modern design principles and processes to provide our customers with anything from small internal tools to large enterprise applications to web/mobile apps with huge user bases.
-              </Typography>
+                Our affordable services use modern design principles and processes
+                to provide our customers with anything from small internal tools to
+                large enterprise applications to web/mobile apps with huge
+                userbases.
+                            </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <ImageTransition src={polestarMobile} />
@@ -85,6 +96,7 @@ class IndexPage extends React.Component<IndexPageProps> {
 
           <this.RenderServices />
         </div>
+
       </MainLayout>
     )
   }
@@ -132,7 +144,7 @@ class IndexPage extends React.Component<IndexPageProps> {
 
     return (<BottomNavigation
       showLabels
-      className={classes.root}
+      className={classes.bottomNav}
     >
       {
         services.map((service, index) => {

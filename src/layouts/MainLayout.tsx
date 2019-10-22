@@ -1,85 +1,94 @@
-import * as React from "react"
-import { createMuiTheme, MuiThemeProvider, CssBaseline, AppBar, Typography, Theme, withStyles, Hidden, IconButton, Drawer, Container } from "@material-ui/core";
+import * as React from "react";
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  CssBaseline,
+  AppBar,
+  Typography,
+  Theme,
+  withStyles,
+  Hidden,
+  IconButton,
+  Drawer,
+  Container,
+} from "@material-ui/core";
 import { Link } from "gatsby";
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
-import InvertColorsIcon from '@material-ui/icons/InvertColors';
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
+import InvertColorsIcon from "@material-ui/icons/InvertColors";
 
-import logo from '../assets/logo.png'
+import logo from "../assets/logo.png";
 import { ContactButton } from "../components";
 
 const styles: any = (theme: Theme) => ({
-  '@global': {
+  "@global": {
     img: {
-      maxWidth: '100%',
+      maxWidth: "100%",
     },
   },
   home: {
-    textDecoration: 'none',
-    color: 'inherit',
+    textDecoration: "none",
+    color: "inherit",
     marginLeft: theme.spacing(),
     marginRight: theme.spacing(),
     paddingLeft: 10,
     paddingRight: 10,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: -5
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   logo: {
     height: 30,
     marginRight: theme.spacing(),
-  },
-  company: {
-    marginTop: -5
+    borderRadius: 2,
   },
   headerContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     height: 48,
     maxWidth: 1040,
-    alignSelf: 'center',
-    width: '100%'
+    alignSelf: "center",
+    width: "100%",
   },
   navBar: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: theme.spacing()
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: theme.spacing(),
   },
   drawerNav: {
     padding: theme.spacing(),
     width: 300,
-    maxWidth: '100%',
+    maxWidth: "100%",
   },
   drawerMenu: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
     margin: `-8px -8px 8px -8px`,
     paddingLeft: 8,
-    boxShadow: theme.shadows[1]
+    boxShadow: theme.shadows[1],
   },
   drawerLinkTitle: {
     marginBottom: theme.spacing(2),
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   hamburgerNav: {
-    marginRight: theme.spacing()
+    marginRight: theme.spacing(),
   },
   link: {
-    textDecoration: 'none',
-    color: 'inherit',
+    textDecoration: "none",
+    color: "inherit",
   },
   linkTitle: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    transition: 'opacity ease .2s',
+    transition: "opacity ease .2s",
     opacity: 1,
-    '&:hover': {
+    "&:hover": {
       opacity: 0.7,
-    }
+    },
   },
   footer: {
     paddingTop: theme.spacing(8)
@@ -87,27 +96,27 @@ const styles: any = (theme: Theme) => ({
 });
 
 const links = [
-  { to: '/services', title: 'Services' },
-  { to: '/process', title: 'Process' },
-  { to: '/about', title: 'About' },
-]
+  { to: "/services", title: "Services" },
+  { to: "/process", title: "Process" },
+  { to: "/about", title: "About" },
+];
 
-const themeTypeValue = 'ThemeType';
+const themeTypeValue = "ThemeType";
 
 class _MainLayout extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       drawerOpen: false,
-      themeType: 'dark'
-    }
+      themeType: "dark",
+    };
   }
 
   componentDidMount() {
-    const themeValue = localStorage.getItem(themeTypeValue) || 'dark';
+    const themeValue = localStorage.getItem(themeTypeValue) || "dark";
     this.setState({
-      themeType: themeValue
-    })
+      themeType: themeValue,
+    });
   }
 
   render() {
@@ -130,9 +139,7 @@ class _MainLayout extends React.Component<any, any> {
           <div className={classes.headerContainer}>
             <Link to="/" className={classes.home}>
               <img src={logo} alt="KiwiLabs" className={classes.logo} />
-              <Typography variant="h6" className={classes.company}>
-                Unfrl
-              </Typography>
+              <Typography variant="h6">Unfrl</Typography>
             </Link>
             <Hidden smDown={true}>
               <nav className={classes.navBar}>
@@ -156,33 +163,30 @@ class _MainLayout extends React.Component<any, any> {
               >
                 <nav className={classes.drawerNav}>
                   {this.renderLinks(true)}
-                  <ContactButton style={{ width: '100%' }} />
+                  <ContactButton style={{ width: "100%" }} />
                 </nav>
               </Drawer>
             </Hidden>
           </div>
         </AppBar>
-        <Container maxWidth="lg">
-          {children}
-        </Container>
+        <Container maxWidth="lg">{children}</Container>
         <footer className={classes.footer}></footer>
       </MuiThemeProvider>
-    )
+    );
   }
 
   private toggleTheme = () => {
-    const themeType = this.state.themeType === 'dark' ? 'light' : 'dark';
+    const themeType = this.state.themeType === "dark" ? "light" : "dark";
     localStorage.setItem(themeTypeValue, themeType);
     this.setState({
-      themeType: themeType
-    })
-  }
+      themeType: themeType,
+    });
+  };
 
   private renderLinks = (drawerNav: boolean = false) => {
     const { classes } = this.props;
-    const linkTitle = `${classes.linkTitle} ${drawerNav ? classes.drawerLinkTitle : ''}`;
-    const closeMenu = drawerNav
-      ?
+    const linkTitle = `${classes.linkTitle} ${drawerNav ? classes.drawerLinkTitle : ""}`;
+    const closeMenu = drawerNav ? (
       <div className={classes.drawerMenu}>
         <IconButton onClick={this.toggleTheme}>
           <InvertColorsIcon />
@@ -191,33 +195,30 @@ class _MainLayout extends React.Component<any, any> {
           <CloseIcon />
         </IconButton>
       </div>
-      : null;
+    ) : null;
 
     return (
       <React.Fragment>
         {closeMenu}
-        {
-          links.map(link => (
-            <Link to={link.to} key={link.to} className={classes.link}>
-              <Typography variant="subtitle1" className={linkTitle}>
-                {link.title}
-              </Typography>
-            </Link>
-          ))
-        }
-        {
-          !drawerNav ?
-            <IconButton onClick={this.toggleTheme}>
-              <InvertColorsIcon />
-            </IconButton> : null
-        }
+        {links.map(link => (
+          <Link to={link.to} key={link.to} className={classes.link}>
+            <Typography variant="subtitle1" className={linkTitle}>
+              {link.title}
+            </Typography>
+          </Link>
+        ))}
+        {!drawerNav ? (
+          <IconButton onClick={this.toggleTheme}>
+            <InvertColorsIcon />
+          </IconButton>
+        ) : null}
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   private toggleDrawerOpen = () => {
     this.setState({ drawerOpen: !this.state.drawerOpen });
-  }
+  };
 }
 
 export const MainLayout = withStyles(styles)(_MainLayout);
