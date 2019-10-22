@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Unfrl`,
-    description: `Unfrl brings your idea to life.`,
+    description: `Custom Software Design & Development`,
     author: `Unfrl`,
     publisher: `Unfrl`,
     icon: 'src/assets/favicon.ico'

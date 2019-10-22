@@ -146,7 +146,7 @@ class IndexPage extends React.Component<IndexPageProps> {
               </div>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <ImageTransition src={polestarMobile} className={classes.largeImage} />
+              <ImageTransition alt="mobile-app-screenshot" src={polestarMobile} className={classes.largeImage} />
             </Grid>
           </Grid>
 

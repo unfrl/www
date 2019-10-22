@@ -92,7 +92,7 @@ export default class SEO extends React.Component<any, any> {
                                 )
                                 .concat(meta)}
                         >
-                            <link rel="icon" type="image/png" href={LOGO} sizes="16x16" />
+                            <link rel="preconnect icon" type="image/png" href={LOGO} sizes="16x16" />
                         </Helmet>
                     )
                 }}
