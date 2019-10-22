@@ -81,6 +81,9 @@ const styles: any = (theme: Theme) => ({
       opacity: 0.7,
     }
   },
+  footer: {
+    paddingTop: theme.spacing(8)
+  }
 });
 
 const links = [
@@ -162,6 +165,7 @@ class _MainLayout extends React.Component<any, any> {
         <Container maxWidth="lg">
           {children}
         </Container>
+        <footer className={classes.footer}></footer>
       </MuiThemeProvider>
     )
   }
