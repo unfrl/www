@@ -130,7 +130,6 @@ class Services extends React.Component<any, any> {
                         <ImageTransition src={desktopapp_img} />
                     </Grid>
                 )}
-                <a className={classes.anchor} id="desktop"></a>
                 <Grid item xs={textSpacing}>
                     <Card>
                         <CardHeader title="Desktop Apps" subheader="Powerful tooling!" />
@@ -155,6 +154,7 @@ class Services extends React.Component<any, any> {
                         </div>
                     </Card>
                 </Grid>
+                <a className={classes.anchor} id="desktop"></a>
                 <br />
                 <Grid item xs={textSpacing}>
                     <Card>
