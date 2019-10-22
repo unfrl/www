@@ -5,9 +5,10 @@ import BuildIcon from "@material-ui/icons/Build";
 import WebIcon from "@material-ui/icons/Web";
 import MobileIcon from "@material-ui/icons/MobileFriendly";
 import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
-import { Grid, Typography, Paper, IconButton, Button } from "@material-ui/core";
+import { Grid, Typography, Paper, Button } from "@material-ui/core";
+import { Link } from "gatsby";
 
-import { ImageTransition, PageHeader, SEO } from "../components";
+import { ImageTransition, SEO } from "../components";
 import { MainLayout } from "../layouts";
 import polestarMobile from "../assets/polestar-mobile.png";
 
@@ -32,6 +33,43 @@ const styles: any = (theme: Theme) => ({
     cardDescription: {
         textAlign: "center",
         marginTop: theme.spacing(),
+    },
+    infoContainer: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: theme.spacing(4),
+        marginTop: theme.spacing(4),
+        [theme.breakpoints.up("sm")]: {
+            marginTop: 0,
+        },
+    },
+    infoTitle: {
+        fontSize: "2.5rem",
+        textAlign: "center",
+        marginBottom: theme.spacing(2),
+        [theme.breakpoints.up("sm")]: {
+            fontSize: "3rem",
+            textAlign: "left",
+        },
+    },
+    infoDescription: {
+        textAlign: "center",
+        [theme.breakpoints.up("sm")]: {
+            textAlign: "left",
+        },
+    },
+    link: {
+        textDecoration: "none",
+        color: "inherit",
+    },
+    exploreServices: {
+        display: "flex",
+        marginTop: theme.spacing(4),
+        justifyContent: "center",
+        [theme.breakpoints.up("sm")]: {
+            justifyContent: "flex-start",
+        },
     },
     services: {
         display: "flex",
@@ -67,20 +105,25 @@ class IndexPage extends React.Component<IndexPageProps> {
                 <SEO title="Home" />
                 <div className={classes.root}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <PageHeader title="What we do" />
-                            <Typography variant="body1" align="center" gutterBottom>
-                                We provide custom software solutions for businesses of any size
-                                using the latest in web & mobile technologies to ensure our
-                                customers, and yours, always have the best possible experience.
+                        <Grid item xs={12} sm={6} className={classes.infoContainer}>
+                            <Typography variant="h1" className={classes.infoTitle}>
+                                Custom Software Design & Development
                             </Typography>
-
-                            <Typography variant="body1" align="center" gutterBottom>
-                                Our affordable services use modern design principles and processes
-                                to provide our customers with anything from small internal tools to
-                                large enterprise applications to web/mobile apps with huge
-                                userbases.
+                            <Typography
+                                variant="body1"
+                                gutterBottom
+                                className={classes.infoDescription}
+                            >
+                                Software solutions built using the latest in web and mobile
+                                technologies tailored to your company's needs.
                             </Typography>
+                            <div className={classes.exploreServices}>
+                                <Link to="/services" className={classes.link}>
+                                    <Button variant="contained" size="large" color="primary">
+                                        Explore our Services
+                                    </Button>
+                                </Link>
+                            </div>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <ImageTransition src={polestarMobile} />

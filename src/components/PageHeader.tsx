@@ -1,46 +1,47 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { withStyles, Theme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { withStyles, createStyles, WithStyles, Theme } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
-export interface IPageHeaderProps {
-    classes?: any;
+const styles = (theme: Theme) =>
+    createStyles({
+        header: {
+            width: "100%",
+            textAlign: "center",
+            marginTop: theme.spacing(4),
+            marginBottom: theme.spacing(),
+            fontSize: "2.5rem",
+            [theme.breakpoints.up("sm")]: {
+                fontSize: "3rem",
+            },
+        },
+        subtitle: {
+            width: "100%",
+            textAlign: "center",
+            fontStyle: "italic",
+        },
+        space: {
+            marginBottom: theme.spacing(4),
+        },
+    });
+
+export interface IPageHeaderProps extends WithStyles<typeof styles> {
     title: string;
     subtitle?: string;
 }
 
-const styles: any = (theme: Theme) => ({
-    header: {
-        width: '100%',
-        textAlign: 'center',
-        marginTop: theme.spacing(4),
-        marginBottom: theme.spacing(),
-    },
-    subtitle: {
-        width: '100%',
-        textAlign: 'center',
-        fontStyle: 'italic'
-    },
-    space: {
-        marginBottom: theme.spacing(4)
-    }
-});
-
-class PageHeader extends React.Component<IPageHeaderProps, null> {
+class PageHeader extends React.Component<IPageHeaderProps, {}> {
     public render() {
         const { classes, title, subtitle } = this.props;
         return (
             <div>
-                <Typography variant="h2" className={classes.header}>
+                <Typography variant="h1" className={classes.header}>
                     {title}
                 </Typography>
-                {subtitle &&
-                    <Typography className={classes.subtitle}>
-                        {subtitle}
-                    </Typography>}
+                {subtitle && <Typography className={classes.subtitle}>{subtitle}</Typography>}
                 <div className={classes.space}></div>
             </div>
-        )
+        );
     }
 }
 

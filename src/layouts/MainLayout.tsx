@@ -16,6 +16,7 @@ import { Link } from "gatsby";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 import InvertColorsIcon from "@material-ui/icons/InvertColors";
+import { indigo, orange } from "@material-ui/core/colors";
 
 import logo from "../assets/logo.png";
 import { ContactButton } from "../components";
@@ -119,11 +120,9 @@ class _MainLayout extends React.Component<any, any> {
     render() {
         const theme = createMuiTheme({
             palette: {
-                // primary: { "500" }
+                primary: indigo,
+                secondary: orange,
                 type: this.state.themeType,
-                // text: {
-                //   secondary: '#f00'
-                // }
             },
         });
 
@@ -166,7 +165,9 @@ class _MainLayout extends React.Component<any, any> {
                         </Hidden>
                     </div>
                 </AppBar>
-                <Container maxWidth="lg">{children}</Container>
+                <Container maxWidth="lg" style={{ maxWidth: 1100 }}>
+                    {children}
+                </Container>
             </MuiThemeProvider>
         );
     }
