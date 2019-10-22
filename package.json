@@ -8,6 +8,7 @@
         "start": "gatsby develop",
         "develop": "gatsby develop",
         "build": "gatsby build",
+        "deploy": "gatsby build && gh-pages -d public",
         "type-check": "tsc --noEmit",
         "lint": "tslint --project .",
         "serve": "gatsby serve"
@@ -34,6 +35,7 @@
         "typography-theme-bootstrap": "^0.16.7"
     },
     "devDependencies": {
+        "gh-pages": "^2.1.1",
         "tslint": "^5.10.0",
         "tslint-config-prettier": "^1.13.0",
         "tslint-react": "^3.6.0",
