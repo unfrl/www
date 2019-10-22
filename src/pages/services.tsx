@@ -71,7 +71,7 @@ class Services extends React.Component<any, any> {
                                     />
                                 )}
                                 <Typography className={classes.description}>
-                                    Due to the increasing capabilities of browsers Web Apps are now
+                                    Due to the increasing capabilities of browsers, Web Apps are now
                                     able to solve more problems than ever before. One of the major
                                     perks of web apps is that customers can get a running instance
                                     of your product just by navigating to a page, no installation
@@ -147,7 +147,7 @@ class Services extends React.Component<any, any> {
                                 <Typography className={classes.description}>
                                     For some scenarios, such as deployments that might interact with
                                     on-site equipment, Desktop apps provide an easier workflow than
-                                    other platform. Desktop apps also provide a user with much more
+                                    other platforms. Desktop apps also provide a user with much more
                                     screen real estate which makes it easier for powerful or
                                     data-intensive tools with complex UIs to remain usable.
                                 </Typography>
