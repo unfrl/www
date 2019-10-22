@@ -137,7 +137,7 @@ class _MainLayout extends React.Component<any, any> {
                 <AppBar position="sticky" color="default">
                     <div className={classes.headerContainer}>
                         <Link to="/" className={classes.home}>
-                            <img src={logo} alt="KiwiLabs" className={classes.logo} />
+                            <img src={logo} alt="Unfrl" className={classes.logo} />
                             <Typography variant="h6">Unfrl</Typography>
                         </Link>
                         <Hidden smDown={true}>
