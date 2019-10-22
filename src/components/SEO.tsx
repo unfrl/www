@@ -5,19 +5,19 @@ import React from "react";
 const LOGO = 'https://i.imgur.com/tpUuWHc.png';
 
 export interface ISEOProps {
-    description: string,
-    lang: string,
-    meta: [],
-    keywords: [string],
-    tite: string
+    description?: string,
+    lang?: string,
+    meta?: [],
+    keywords?: string[],
+    tite?: string,
+    title?: string
 }
 
-export default class SEO extends React.Component<any, any> {
+export default class SEO extends React.Component<ISEOProps, any> {
     render() {
         let { description, lang, meta, keywords, title } = this.props;
         lang = lang || 'en';
         meta = meta || [];
-        keywords = keywords || [];
         return (
             <StaticQuery
                 query={detailsQuery}
@@ -83,14 +83,14 @@ export default class SEO extends React.Component<any, any> {
                                 },
                             ]
                                 .concat(
-                                    (keywords || []).length > 0
+                                    (data.site.siteMetadata.keywords || []).length > 0
                                         ? {
                                             name: `keywords`,
-                                            content: keywords.join(`, `),
+                                            content: [...data.site.siteMetadata.keywords, ...(keywords || [""])].join(`, `),
                                         }
                                         : []
                                 )
-                                .concat(meta)}
+                                .concat(meta || [])}
                         >
                             <link rel="preconnect icon" type="image/png" href={LOGO} sizes="16x16" />
                         </Helmet>
@@ -108,6 +108,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        keywords
       }
     }
   }

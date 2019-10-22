@@ -43,7 +43,7 @@ class About extends React.Component<any, any> {
         const { classes } = this.props;
         return (
             <MainLayout>
-                <SEO title="About" />
+                <SEO title="About" keywords={["about", "about us"]} />
                 <PageHeader title="About" />
                 <Grid container spacing={3}>
                     <Grid item xs={12} className={classes.bottomMargin}>

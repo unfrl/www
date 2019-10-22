@@ -111,7 +111,7 @@ class Process extends React.Component<any, any> {
         const { classes } = this.props;
         return (
             <MainLayout>
-                <SEO title="Process" />
+                <SEO title="Process" keywords={["process"]} />
                 <div className={classes.root}>
                     <div>
                         <PageHeader title="Process" subtitle="Code → Review → Repeat" />

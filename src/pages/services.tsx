@@ -196,7 +196,7 @@ class Services extends React.Component<any, any> {
         const { classes } = this.props;
         return (
             <MainLayout>
-                <SEO title="Services" />
+                <SEO title="Services" keywords={["services"]} />
                 <div className={classes.root}>
                     <div>
                         <PageHeader title="Services" />

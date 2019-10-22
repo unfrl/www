@@ -4,7 +4,16 @@ module.exports = {
     description: `Custom Software Design & Development`,
     author: `Unfrl`,
     publisher: `Unfrl`,
-    icon: 'src/assets/favicon.ico'
+    icon: 'src/assets/favicon.ico',
+    keywords: [
+      'software',
+      'development',
+      'custom',
+      'custom apps',
+      'engineering',
+      'progressive web app',
+      'PWA'
+    ]
   },
   plugins: [
     `gatsby-plugin-typescript`,
