@@ -1,13 +1,5 @@
-import {
-    Theme,
-    withStyles,
-    Grid,
-    Typography,
-    Avatar,
-    Badge,
-    Tooltip,
-    createStyles,
-} from "@material-ui/core";
+
+import { Theme, withStyles, Grid, Card, CardHeader, CardContent, Typography, Icon, Chip, Avatar, Badge, Tooltip, createStyles, useTheme, useMediaQuery, IconButton, ClickAwayListener, Button } from "@material-ui/core";
 import React from "react";
 import MoneyOffRoundedIcon from "@material-ui/icons/MoneyOffRounded";
 
@@ -28,11 +20,16 @@ const styles: any = (theme: Theme) => ({
     stepTitleText: {
         marginLeft: theme.spacing(2),
     },
-    freeBadge: {
-        background: "mediumseagreen",
+    freeMobileStepTitleText: {
+        marginLeft: theme.spacing(1)
     },
     smallIcon: {
         width: 15,
+    },
+    freeButton: {
+        justifyContent: 'left',
+        paddingLeft: 0,
+        minWidth: 30
     },
 });
 
@@ -84,12 +81,32 @@ const SmallBorderedBadge = withStyles((theme: Theme) =>
         badge: {
             right: -3,
             border: `2px solid ${theme.palette.background.default}`,
-            padding: "0 4px",
+            padding: '0 4px',
+            background: 'mediumseagreen',
         },
     })
 )(Badge);
 
+export interface IProcessState {
+    freeTooltipOpen: boolean
+}
+
 class Process extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            freeTooltipOpen: false
+        }
+    }
+
+    handleTooltipClose = () => {
+        this.setState({ freeTooltipOpen: false });
+    }
+
+    handleTooltipOpen = () => {
+        this.setState({ freeTooltipOpen: true });
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -106,47 +123,128 @@ class Process extends React.Component<any, any> {
     }
 
     RenderSections = () => {
-        const { classes } = this.props;
         return (
-            <Grid container direction="row" justify="center" alignItems="stretch" spacing={3}>
-                {processSteps.map((step, index) => {
-                    const { Title, Subtitle, isFree, Body } = step;
-                    return (
-                        <Grid item xs={12} md={6} className={classes.test}>
-                            <div>
-                                <Typography variant="h4" className={classes.stepTitle}>
-                                    {isFree ? (
-                                        <Tooltip placement="top-end" title="This step is FREE 🤑">
-                                            <SmallBorderedBadge
-                                                badgeContent={
-                                                    <MoneyOffRoundedIcon
-                                                        className={classes.smallIcon}
-                                                    />
-                                                }
-                                                classes={{ badge: classes.freeBadge }}
-                                                overlap="circle"
-                                            >
-                                                <Avatar className={classes.stepIcon}>
-                                                    {index + 1}
-                                                </Avatar>
-                                            </SmallBorderedBadge>
-                                        </Tooltip>
-                                    ) : (
-                                        <Avatar className={classes.stepIcon}>{index + 1}</Avatar>
-                                    )}
-                                    <span className={classes.stepTitleText}>{Title}</span>
-                                </Typography>
-                                <Typography variant="subtitle1" color="textSecondary">
-                                    {Subtitle}
-                                </Typography>
-                            </div>
-                            <Typography>{Body}</Typography>
-                        </Grid>
-                    );
-                })}
+            <Grid container
+                direction="row"
+                justify="center"
+                alignItems="stretch"
+                spacing={3}>
+                {
+                    processSteps.map((step, index) => {
+                        const { isFree } = step;
+                        if (isFree) {
+                            return (
+                                <this.RenderFreeStep data={{ ...step, StepNumber: index }} />
+                            )
+                        }
+                        return (
+                            <this.RenderStep data={{ ...step, StepNumber: index }} />
+                        )
+                    })
+                }
             </Grid>
-        );
-    };
+        )
+    }
+
+    RenderStep = (data: any) => {
+        const theme = useTheme();
+        const fullSize = useMediaQuery(theme.breakpoints.up('sm'));
+        const { classes } = this.props;
+        const { Title, Subtitle, Body, StepNumber } = data.data;
+
+        if (fullSize) {
+            return (
+                <Grid item xs={12} md={6}>
+                    <div>
+                        <Typography variant="h4" className={classes.stepTitle}>
+                            <Avatar className={classes.stepIcon}>{StepNumber + 1}</Avatar>
+                            <span className={classes.stepTitleText}>{Title}</span>
+                        </Typography>
+                        <Typography variant="subtitle1" color='textSecondary'>{Subtitle}</Typography>
+                    </div>
+                    <Typography>
+                        {Body}
+                    </Typography>
+                </Grid>
+            )
+        }
+        return (
+            <Grid item xs={12} md={6}>
+                <div>
+                    <Typography variant="h4" className={classes.stepTitle}>
+                        <Avatar className={classes.stepIcon}>{StepNumber + 1}</Avatar>
+                        <span className={classes.stepTitleText}>{Title}</span>
+                    </Typography>
+                    <Typography variant="subtitle1" color='textSecondary'>{Subtitle}</Typography>
+                </div>
+                <Typography>
+                    {Body}
+                </Typography>
+            </Grid>
+        )
+    }
+
+    RenderFreeStep = (data: any) => {
+        const theme = useTheme();
+        const fullSize = useMediaQuery(theme.breakpoints.up('sm'));
+        const { classes } = this.props;
+        const { Title, Subtitle, Body, StepNumber } = data.data;
+        if (fullSize) {
+            return (
+                <Grid item xs={12} md={6}>
+                    <div>
+                        <Typography variant="h4" className={classes.stepTitle}>
+                            <Tooltip placement='top-end' title="This step is FREE 🤑">
+                                <SmallBorderedBadge badgeContent={<MoneyOffRoundedIcon className={classes.smallIcon} />} overlap='circle'>
+                                    <Avatar className={classes.stepIcon}>{StepNumber + 1}</Avatar>
+                                </SmallBorderedBadge>
+                            </Tooltip>
+                            <span className={classes.stepTitleText}>{Title}</span>
+                        </Typography>
+                        <Typography variant="subtitle1" color='textSecondary'>{Subtitle}</Typography>
+                    </div>
+                    <Typography>
+                        {Body}
+                    </Typography>
+                </Grid>
+            )
+        }
+
+        return (
+            <Grid item xs={12} md={6}>
+                <div>
+                    <Typography variant="h4" className={classes.stepTitle}>
+                        <ClickAwayListener onClickAway={this.handleTooltipClose}>
+                            <div>
+                                <Tooltip
+                                    PopperProps={{
+                                        disablePortal: true,
+                                    }}
+                                    onClose={this.handleTooltipClose}
+                                    open={this.state.freeTooltipOpen}
+                                    disableFocusListener
+                                    disableHoverListener
+                                    disableTouchListener
+                                    placement='right-start' title="This step is FREE 🤑">
+                                    <Button onClick={this.handleTooltipOpen} className={classes.freeButton}>
+                                        <SmallBorderedBadge badgeContent={<MoneyOffRoundedIcon className={classes.smallIcon} />} overlap='circle'>
+                                            <Avatar className={classes.stepIcon}>{StepNumber + 1}</Avatar>
+                                        </SmallBorderedBadge>
+                                    </Button>
+                                </Tooltip>
+                            </div>
+                        </ClickAwayListener>
+                        <span className={classes.freeMobileStepTitleText}>{Title}</span>
+                    </Typography>
+                    <Typography variant="subtitle1" color='textSecondary'>{Subtitle}</Typography>
+                </div>
+                <Typography>
+                    {Body}
+                </Typography>
+            </Grid>
+        )
+
+    }
 }
 
 export default withStyles(styles)(Process);

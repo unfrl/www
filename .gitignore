@@ -63,3 +63,6 @@ typings/
 ### Gatsby ###
 public
 .cache
+
+### GitHub Pages ###
+!public/static/CNAME
