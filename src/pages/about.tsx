@@ -12,9 +12,6 @@ import androo from "../assets/androo.jpg";
 import matt from "../assets/matt.jpg";
 
 const styles: any = (theme: Theme) => ({
-    root: {
-        flexGrow: 1,
-    },
     bottomMargin: {
         marginBottom: 24,
     },
@@ -47,9 +44,7 @@ class About extends React.Component<any, any> {
         return (
             <MainLayout>
                 <SEO title="About" />
-                <div className={classes.root}>
-                    <PageHeader title="About" />
-                </div>
+                <PageHeader title="About" />
                 <Grid container spacing={3}>
                     <Grid item xs={12} className={classes.bottomMargin}>
                         <Card>
@@ -154,7 +149,6 @@ class About extends React.Component<any, any> {
                             </CardContent>
                         </Card>
                     </Grid>
-                    {/* </Grid> */}
                 </Grid>
             </MainLayout>
         );
