@@ -5,8 +5,17 @@ import BuildIcon from "@material-ui/icons/Build";
 import WebIcon from "@material-ui/icons/Web";
 import MobileIcon from "@material-ui/icons/MobileFriendly";
 import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
-import { Grid, Typography, Paper, Button } from "@material-ui/core";
 import { Link } from "gatsby";
+import {
+    Grid,
+    Typography,
+    Paper,
+    Button,
+    BottomNavigation,
+    BottomNavigationAction,
+    useTheme,
+    useMediaQuery,
+} from "@material-ui/core";
 
 import { ImageTransition, SEO } from "../components";
 import { MainLayout } from "../layouts";
@@ -88,12 +97,20 @@ const styles: any = (theme: Theme) => ({
         marginTop: 2,
         textAlign: "center",
     },
+
+    bottomNav: {
+        width: "100%",
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
 });
 
 const services = [
-    { Title: "Web Apps", Icon: WebIcon, Destination: "services#web" },
-    { Title: "Mobile Apps", Icon: MobileIcon, Destination: "services#mobile" },
-    { Title: "Desktop Apps", Icon: DesktopWindowsIcon, Destination: "services#desktop" },
+    { Title: "Web", Icon: WebIcon, Destination: "services#web" },
+    { Title: "Mobile", Icon: MobileIcon, Destination: "services#mobile" },
+    { Title: "Desktop", Icon: DesktopWindowsIcon, Destination: "services#desktop" },
     { Title: "Full Stack", Icon: BuildIcon, Destination: "services#cross-platform" },
 ];
 
@@ -130,52 +147,76 @@ class IndexPage extends React.Component<IndexPageProps> {
                         </Grid>
                     </Grid>
 
-                    <Paper className={classes.card}>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} sm={6}>
-                                <div className={classes.services}>
-                                    {services.map((service, index) => {
-                                        const { Icon, Title, Destination } = service;
-                                        return (
-                                            <Grid
-                                                item
-                                                xs
-                                                key={index}
-                                                className={classes.serviceItem}
-                                            >
-                                                <Button
-                                                    color="secondary"
-                                                    onClick={() => {
-                                                        navigate(Destination);
-                                                    }}
-                                                >
-                                                    <Icon fontSize="large" />
-                                                </Button>
-                                                <Typography
-                                                    variant="caption"
-                                                    className={classes.serviceTitle}
-                                                >
-                                                    {Title}
-                                                </Typography>
-                                            </Grid>
-                                        );
-                                    })}
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <Typography variant="h5" className={classes.cardTitle}>
-                                    Any Project
-                                </Typography>
-                                <Typography className={classes.cardDescription}>
-                                    Deployed how you want it
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Paper>
+                    <this.Services />
                 </div>
             </MainLayout>
         );
     }
+
+    private Services = () => {
+        const theme = useTheme();
+        const fullSize = useMediaQuery(theme.breakpoints.up("sm"));
+        const { classes } = this.props;
+
+        if (fullSize) {
+            return (
+                <Paper className={classes.card}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
+                            <div className={classes.services}>
+                                {services.map((service, index) => {
+                                    const { Icon, Title, Destination } = service;
+                                    return (
+                                        <Grid item xs key={index} className={classes.serviceItem}>
+                                            <Button
+                                                color="secondary"
+                                                onClick={() => {
+                                                    navigate(Destination);
+                                                }}
+                                            >
+                                                <Icon fontSize="large" />
+                                            </Button>
+                                            <Typography
+                                                variant="caption"
+                                                className={classes.serviceTitle}
+                                            >
+                                                {Title}
+                                            </Typography>
+                                        </Grid>
+                                    );
+                                })}
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Typography variant="h5" className={classes.cardTitle}>
+                                Any Project
+                            </Typography>
+                            <Typography className={classes.cardDescription}>
+                                Deployed how you want it
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Paper>
+            );
+        }
+
+        return (
+            <BottomNavigation showLabels className={classes.bottomNav}>
+                {services.map((service, index) => {
+                    const { Icon, Title, Destination } = service;
+                    return (
+                        <BottomNavigationAction
+                            label={Title}
+                            icon={<Icon color="secondary" fontSize="small" />}
+                            onClick={() => {
+                                navigate(Destination);
+                            }}
+                        />
+                    );
+                })}
+            </BottomNavigation>
+        );
+    };
 }
 
 export default withStyles(styles)(IndexPage);
