@@ -7,9 +7,6 @@ import { MainLayout } from "../layouts";
 import polestarMobile from "../assets/polestar-mobile.webp";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        width: "100%",
-    },
     infoContainer: {
         display: "flex",
         flexDirection: "column",
@@ -58,39 +55,37 @@ const IndexPage: FunctionComponent = () => {
     return (
         <MainLayout>
             <SEO title="Home" />
-            <div className={classes.root}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6} className={classes.infoContainer}>
-                        <Typography variant="h1" className={classes.infoTitle}>
-                            Custom Software Design & Development
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6} className={classes.infoContainer}>
+                    <Typography variant="h1" className={classes.infoTitle}>
+                        Custom Software Design & Development
                         </Typography>
-                        <Typography
-                            variant="body1"
-                            gutterBottom
-                            className={classes.infoDescription}
-                        >
-                            Software solutions built using the latest in web and mobile technologies
-                            tailored to your company's needs.
+                    <Typography
+                        variant="body1"
+                        gutterBottom
+                        className={classes.infoDescription}
+                    >
+                        Software solutions built using the latest in web and mobile technologies
+                        tailored to your company's needs.
                         </Typography>
-                        <div className={classes.exploreServices}>
-                            <Link to="/services" className={classes.link}>
-                                <Button variant="contained" size="large" color="primary">
-                                    Explore our Services
+                    <div className={classes.exploreServices}>
+                        <Link to="/services" className={classes.link}>
+                            <Button variant="contained" size="large" color="primary">
+                                Explore our Services
                                 </Button>
-                            </Link>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <ImageTransition
-                            alt="mobile-app-screenshot"
-                            src={polestarMobile}
-                            className={classes.largeImage}
-                        />
-                    </Grid>
+                        </Link>
+                    </div>
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                    <ImageTransition
+                        alt="mobile-app-screenshot"
+                        src={polestarMobile}
+                        className={classes.largeImage}
+                    />
+                </Grid>
+            </Grid>
 
-                <ServicesCard />
-            </div>
+            <ServicesCard />
         </MainLayout>
     );
 };

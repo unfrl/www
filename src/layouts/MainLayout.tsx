@@ -19,7 +19,8 @@ import InvertColorsIcon from "@material-ui/icons/InvertColors";
 import { indigo, orange } from "@material-ui/core/colors";
 
 import logo from "../assets/logo.png";
-import { ContactButton } from "../components";
+import { ContactButton, Footer } from "../components";
+import { FooterType } from "../components/Footer";
 
 const styles: any = (theme: Theme) => ({
     "@global": {
@@ -95,9 +96,6 @@ const styles: any = (theme: Theme) => ({
             opacity: 0.7,
         },
     },
-    footer: {
-        paddingTop: theme.spacing(8),
-    },
 });
 
 const links = [
@@ -165,6 +163,7 @@ class _MainLayout extends React.Component<any, any> {
                                 onClose={this.toggleDrawerOpen}
                             >
                                 <nav className={classes.drawerNav}>{this.renderLinks(true)}</nav>
+                                <Footer variant={FooterType.Drawer}></Footer>
                             </Drawer>
                         </Hidden>
                     </div>
@@ -172,7 +171,7 @@ class _MainLayout extends React.Component<any, any> {
                 <Container maxWidth="lg" style={{ maxWidth: 1100 }}>
                     {children}
                 </Container>
-                <footer className={classes.footer}></footer>
+                <Footer variant={FooterType.Normal}></Footer>
             </MuiThemeProvider>
         );
     }
