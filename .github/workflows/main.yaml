@@ -1,0 +1,26 @@
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    # branches: 
+    #   - master
+
+jobs:
+  deploy-site:
+    name: Deploy Unfrl.com
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print a message
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+    - name: Deploy site
+      steps:
+        - uses: actions/checkout@v1
+        - name: Print out repo structure
+          run: ls
+        # - name: Deploy the site
+        #   run: yarn deploy
