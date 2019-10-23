@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react"
 import React from "react"
-import { makeStyles, useTheme, useMediaQuery, Grid, Typography } from "@material-ui/core";
+import { makeStyles, useTheme, useMediaQuery, Grid, Typography, IconButton } from "@material-ui/core";
+import { Link } from "gatsby";
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { ImageTransition } from ".";
 import logo from "../assets/logo.png";
@@ -8,17 +10,18 @@ import logo from "../assets/logo.png";
 const useStyles = makeStyles(theme => ({
     fullFooterSpacing: {
         marginTop: theme.spacing(4),
-        paddingTop: theme.spacing(2),
+        paddingTop: theme.spacing(),
         paddingBottom: theme.spacing(2),
         width: "100%",
         position: "static",
         bottom: 0,
         left: 0,
         right: 0,
-        // maxHeight: 100
+        maxHeight: 80
     },
     fullFooter: {
-        backgroundColor: theme.palette.background.paper
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[1],
     },
     footerItem: {
         // backgroundColor: 'red'
@@ -28,19 +31,29 @@ const useStyles = makeStyles(theme => ({
         paddingRight: theme.spacing(4)
     },
     logo: {
-        maxWidth: 70,
-        maxHeight: 70
+        maxWidth: 45,
+        maxHeight: 45,
+        marginRight: theme.spacing(2)
     },
     logoContainer: {
         display: 'flex',
-        justifyContent: 'space-evenly'
+        alignItems: 'center',
+        maxHeight: 60,
     },
     copyright: {
         foSize: '1rem',
-        // position: 'static',
         bottom: '1rem',
         color: theme.palette.text.hint
-    }
+    },
+    linkArea: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    },
+    link: {
+        textDecoration: "none",
+        color: "inherit",
+    },
 }));
 
 export enum FooterType {
@@ -69,17 +82,32 @@ const Footer: FunctionComponent<IFooterProps> = props => {
                         alignItems="center">
                         <Grid className={classes.footerItem} item xs={3}>
                             <div className={classes.logoContainer}>
-                                <ImageTransition className={classes.logo} src={logo} />
+                                <Link to="/">
+                                    <ImageTransition className={classes.logo} src={logo} />
+                                </Link>
                                 <div>
-                                    <Typography variant="h4">Unfrl</Typography>
-                                    <Typography variant="h6">Custom Software</Typography>
-                                    <small className={classes.copyright}>© 2019 Unfrl LLC</small>
+                                    <Typography variant="h6">Unfrl</Typography>
+                                    <Typography variant="subtitle2">Software Design & Development</Typography>
                                 </div>
                             </div>
+                            <small className={classes.copyright}>© 2019 Unfrl LLC</small>
 
                         </Grid>
                         <Grid className={classes.footerItem} item xs={3}>
-                            stuff
+                            <div className={classes.linkArea}>
+                                <Link to="services" className={classes.link}>
+                                    Services
+                                </Link>
+                                <Link to="process" className={classes.link}>
+                                    Process
+                                </Link>
+                                <Link to="about" className={classes.link}>
+                                    About
+                                </Link>
+                                <IconButton color="inherit" href="https://github.com/unfrl" >
+                                    <GitHubIcon />
+                                </IconButton>
+                            </div>
                         </Grid>
                     </Grid>
                 </footer>
