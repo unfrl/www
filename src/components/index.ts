@@ -4,3 +4,4 @@ export { default as ImageTransition } from "./ImageTransition";
 export { default as SEO } from "./SEO";
 export { default as ServicesCard } from "./ServicesCard";
 export { default as ProcessStep } from "./ProcessStep";
+export { default as Biography } from "./Biography";
