@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
         display: "block",
         margin: "auto",
     },
-    bio: {
+    body: {
         marginTop: theme.spacing(),
         textAlign: "left",
     },
@@ -37,13 +37,13 @@ export interface IBiographyProps {
     name: string;
     image: any;
     avatarSrc: string;
-    bio: string | React.ReactNode;
+    body: string | React.ReactNode;
     title?: string;
 }
 
 const Biography: FunctionComponent<IBiographyProps> = props => {
     const classes = useStyles();
-    const { name, image, avatarSrc, bio, title } = props;
+    const { name, image, avatarSrc, body, title } = props;
 
     return (
         <Card>
@@ -55,8 +55,8 @@ const Biography: FunctionComponent<IBiographyProps> = props => {
 
             <CardContent className={classes.content}>
                 <CardMedia className={classes.media} image={image} title={name} />
-                <Typography component="p" className={classes.bio}>
-                    {bio}
+                <Typography component="p" className={classes.body}>
+                    {body}
                 </Typography>
             </CardContent>
         </Card>

@@ -7,12 +7,12 @@ import { PageHeader, SEO, Biography } from "../components";
 import androo from "../assets/androo.jpg";
 import matt from "../assets/matt.jpg";
 
-const bios = [
+const biographies = [
     {
         name: "Andrew Noyes",
         image: androo,
         avatarSrc: "https://avatars0.githubusercontent.com/u/9619457?v=4.png",
-        bio: (
+        body: (
             <Fragment>
                 I took my first programming class in high school, developing a simple video game
                 using Microsoft Basic, and I hated it! Luckily, I rediscovered programming and
@@ -37,7 +37,7 @@ const bios = [
         name: "Matthew Monahan",
         image: matt,
         avatarSrc: "https://avatars0.githubusercontent.com/u/6914238?v=4.png",
-        bio: (
+        body: (
             <Fragment>
                 I went into college planning on getting a Biology degree and working in a lab doing
                 what I assured myself would be important work. I have always loved computers and
@@ -80,9 +80,9 @@ const About: FunctionComponent = () => {
                         </CardContent>
                     </Card>
                 </Grid>
-                {bios.map(bio => (
-                    <Grid item xs={12} sm={6} key={bio.name}>
-                        <Biography {...bio} />
+                {biographies.map(biography => (
+                    <Grid item xs={12} sm={6} key={biography.name}>
+                        <Biography {...biography} />
                     </Grid>
                 ))}
             </Grid>
