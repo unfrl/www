@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         width: 200,
         height: 200,
         alignSelf: "center",
-        borderRadius: 4,
+        borderRadius: theme.shape.borderRadius,
     },
     content: {
         display: "flex",
