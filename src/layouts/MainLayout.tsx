@@ -41,7 +41,7 @@ const styles: any = (theme: Theme) => ({
     logo: {
         height: 30,
         marginRight: theme.spacing(),
-        borderRadius: 2,
+        borderRadius: theme.shape.borderRadius,
     },
     headerContainer: {
         display: "flex",
@@ -67,8 +67,8 @@ const styles: any = (theme: Theme) => ({
     drawerMenu: {
         display: "flex",
         justifyContent: "space-between",
+        alignItems: "center",
         margin: `-8px -8px 8px -8px`,
-        paddingLeft: 8,
         boxShadow: theme.shadows[1],
     },
     drawerLinkTitle: {
@@ -77,6 +77,10 @@ const styles: any = (theme: Theme) => ({
     },
     hamburgerNav: {
         marginRight: theme.spacing(),
+    },
+    row: {
+        display: "flex",
+        alignItems: "center",
     },
     link: {
         textDecoration: "none",
@@ -105,7 +109,7 @@ const links = [
 const themeTypeValue = "ThemeType";
 
 class _MainLayout extends React.Component<any, any> {
-    constructor(props: any) {
+    public constructor(props: any) {
         super(props);
         this.state = {
             drawerOpen: false,
@@ -113,14 +117,14 @@ class _MainLayout extends React.Component<any, any> {
         };
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         const themeValue = localStorage.getItem(themeTypeValue) || "dark";
         this.setState({
             themeType: themeValue,
         });
     }
 
-    render() {
+    public render() {
         const theme = createMuiTheme({
             palette: {
                 primary: indigo,
@@ -136,10 +140,7 @@ class _MainLayout extends React.Component<any, any> {
                 <CssBaseline />
                 <AppBar position="sticky" color="default">
                     <div className={classes.headerContainer}>
-                        <Link to="/" className={classes.home}>
-                            <img src={logo} alt="Unfrl" className={classes.logo} />
-                            <Typography variant="h6">Unfrl</Typography>
-                        </Link>
+                        {this.renderLogo()}
                         <Hidden smDown={true}>
                             <nav className={classes.navBar}>
                                 {this.renderLinks()}
@@ -147,23 +148,23 @@ class _MainLayout extends React.Component<any, any> {
                             </nav>
                         </Hidden>
                         <Hidden mdUp={true}>
-                            <IconButton
-                                color="inherit"
-                                aria-label="Menu"
-                                className={classes.hamburgerNav}
-                                onClick={this.toggleDrawerOpen}
-                            >
-                                <MenuIcon />
-                            </IconButton>
+                            <div className={classes.row}>
+                                <ContactButton style={{ marginRight: 8 }} />
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="Menu"
+                                    className={classes.hamburgerNav}
+                                    onClick={this.toggleDrawerOpen}
+                                >
+                                    <MenuIcon />
+                                </IconButton>
+                            </div>
                             <Drawer
                                 anchor="right"
                                 open={this.state.drawerOpen}
                                 onClose={this.toggleDrawerOpen}
                             >
-                                <nav className={classes.drawerNav}>
-                                    {this.renderLinks(true)}
-                                    <ContactButton style={{ width: "100%" }} />
-                                </nav>
+                                <nav className={classes.drawerNav}>{this.renderLinks(true)}</nav>
                             </Drawer>
                         </Hidden>
                     </div>
@@ -176,12 +177,15 @@ class _MainLayout extends React.Component<any, any> {
         );
     }
 
-    private toggleTheme = () => {
-        const themeType = this.state.themeType === "dark" ? "light" : "dark";
-        localStorage.setItem(themeTypeValue, themeType);
-        this.setState({
-            themeType: themeType,
-        });
+    private renderLogo = () => {
+        const { classes } = this.props;
+
+        return (
+            <Link to="/" className={classes.home}>
+                <img src={logo} alt="Unfrl" className={classes.logo} />
+                <Typography variant="h6">Unfrl</Typography>
+            </Link>
+        );
     };
 
     private renderLinks = (drawerNav: boolean = false) => {
@@ -189,9 +193,7 @@ class _MainLayout extends React.Component<any, any> {
         const linkTitle = `${classes.linkTitle} ${drawerNav ? classes.drawerLinkTitle : ""}`;
         const closeMenu = drawerNav ? (
             <div className={classes.drawerMenu}>
-                <IconButton onClick={this.toggleTheme}>
-                    <InvertColorsIcon />
-                </IconButton>
+                {this.renderLogo()}
                 <IconButton onClick={this.toggleDrawerOpen} className={classes.hamburgerNav}>
                     <CloseIcon />
                 </IconButton>
@@ -208,13 +210,20 @@ class _MainLayout extends React.Component<any, any> {
                         </Typography>
                     </Link>
                 ))}
-                {!drawerNav ? (
-                    <IconButton onClick={this.toggleTheme}>
-                        <InvertColorsIcon />
-                    </IconButton>
-                ) : null}
+
+                <IconButton onClick={this.toggleTheme}>
+                    <InvertColorsIcon />
+                </IconButton>
             </React.Fragment>
         );
+    };
+
+    private toggleTheme = () => {
+        const themeType = this.state.themeType === "dark" ? "light" : "dark";
+        localStorage.setItem(themeTypeValue, themeType);
+        this.setState({
+            themeType: themeType,
+        });
     };
 
     private toggleDrawerOpen = () => {
