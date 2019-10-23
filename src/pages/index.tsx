@@ -1,17 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { withStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, Grid, Typography, Button } from "@material-ui/core";
 import { Link } from "gatsby";
-import { Grid, Typography, Button } from "@material-ui/core";
 
 import { ImageTransition, SEO, ServicesCard } from "../components";
 import { MainLayout } from "../layouts";
 import polestarMobile from "../assets/polestar-mobile.webp";
-
-// Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema
-interface IndexPageProps {
-    classes: any;
-}
 
 const useStyles = makeStyles(theme => ({
     root: {
