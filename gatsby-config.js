@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Unfrl`,
+    siteUrl: `https://unfrl.com`,
     description: `Custom Software Design & Development`,
     author: `Unfrl`,
     publisher: `Unfrl`,
@@ -27,5 +28,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        createLinkInHead: true
+      }
+    }
   ],
 }
