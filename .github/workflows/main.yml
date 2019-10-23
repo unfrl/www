@@ -1,19 +1,16 @@
-name: Greet Everyone
-# This workflow is triggered on pushes to the repository.
-on: [push]
+name: Gatsby Publish
+
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        run: 'hello!'
-      # This step prints an output (time) from the previous step's action.
-      - name: Get repo
-        uses: actions/checkout@master
-      - name: Print file structure
-        run: ls
+      - uses: actions/checkout@v1
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.WWW_DEPLOY_KEY }}
+          deploy-branch: gh-pages
