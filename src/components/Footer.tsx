@@ -1,15 +1,14 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, Fragment } from "react"
 import React from "react"
 import { makeStyles, useTheme, useMediaQuery, Grid, Typography, IconButton } from "@material-ui/core";
 import { Link } from "gatsby";
 import GitHubIcon from '@material-ui/icons/GitHub';
 
-import { ImageTransition } from ".";
-import logo from "../assets/logo.png";
+import { Logo } from ".";
+
 
 const useStyles = makeStyles(theme => ({
-    fullFooterSpacing: {
-        marginTop: theme.spacing(4),
+    fullFooter: {
         paddingTop: theme.spacing(),
         paddingBottom: theme.spacing(2),
         width: "100%",
@@ -17,33 +16,13 @@ const useStyles = makeStyles(theme => ({
         bottom: 0,
         left: 0,
         right: 0,
-        maxHeight: 80
-    },
-    fullFooter: {
+        maxHeight: 80,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[1],
-    },
-    footerItem: {
-        // backgroundColor: 'red'
     },
     footerContainer: {
         paddingLeft: theme.spacing(4),
         paddingRight: theme.spacing(4)
-    },
-    logo: {
-        maxWidth: 45,
-        maxHeight: 45,
-        marginRight: theme.spacing(2)
-    },
-    logoContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        maxHeight: 60,
-    },
-    copyright: {
-        foSize: '1rem',
-        bottom: '1rem',
-        color: theme.palette.text.hint
     },
     linkArea: {
         display: 'flex',
@@ -54,6 +33,13 @@ const useStyles = makeStyles(theme => ({
         textDecoration: "none",
         color: "inherit",
     },
+    drawerFooter: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        paddingLeft: theme.spacing(),
+        paddingRight: theme.spacing()
+    }
 }));
 
 export enum FooterType {
@@ -63,37 +49,27 @@ export enum FooterType {
 
 export interface IFooterProps {
     variant: FooterType,
-
+    className?: any
 }
 
 const Footer: FunctionComponent<IFooterProps> = props => {
     const classes = useStyles();
-    const { variant } = props;
+    const { variant, className } = props;
     const theme = useTheme();
     const fullSize = useMediaQuery(theme.breakpoints.up("md"));
 
     if (variant == FooterType.Normal) {
         if (fullSize) {
             return (
-                <footer className={`${classes.fullFooterSpacing} ${classes.fullFooter}`}>
+                <footer className={`${classes.fullFooter} ${className || ''}`}>
                     <Grid className={classes.footerContainer}
                         container
                         justify="space-between"
                         alignItems="center">
-                        <Grid className={classes.footerItem} item xs={3}>
-                            <div className={classes.logoContainer}>
-                                <Link to="/">
-                                    <ImageTransition className={classes.logo} src={logo} />
-                                </Link>
-                                <div>
-                                    <Typography variant="h6">Unfrl</Typography>
-                                    <Typography variant="subtitle2">Software Design & Development</Typography>
-                                </div>
-                            </div>
-                            <small className={classes.copyright}>© 2019 Unfrl LLC</small>
-
+                        <Grid item xs={3}>
+                            <Logo />
                         </Grid>
-                        <Grid className={classes.footerItem} item xs={3}>
+                        <Grid item xs={3}>
                             <div className={classes.linkArea}>
                                 <Link to="services" className={classes.link}>
                                     Services
@@ -113,17 +89,20 @@ const Footer: FunctionComponent<IFooterProps> = props => {
                 </footer>
             )
         }
-        //Even if it is small we want to render the empty footer with a topMargin
+        //Even if it is small we want to render the empty footer so things using it, like layouts, can add a topmargin
         return (
-            <footer className={classes.fullFooterSpacing}>EMPTY</footer>
+            <footer className={className}></footer>
         )
     }
 
     return (
-        <div>
-            SMALL
+        <div className={classes.drawerFooter}>
+            <Logo />
         </div>
     )
+
 }
+
+
 
 export default Footer;

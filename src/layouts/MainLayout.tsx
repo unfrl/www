@@ -103,6 +103,12 @@ const styles: any = (theme: Theme) => ({
             opacity: 0.7,
         },
     },
+    footer: {
+        marginTop: theme.spacing(4),
+    },
+    menu: {
+        marginLeft: theme.spacing(3)
+    }
 });
 
 const links = [
@@ -181,7 +187,7 @@ class _MainLayout extends React.Component<any, any> {
                     <Container maxWidth="lg" style={{ maxWidth: 1100 }}>
                         {children}
                     </Container>
-                    <Footer variant={FooterType.Normal}></Footer>
+                    <Footer className={classes.footer} variant={FooterType.Normal}></Footer>
                 </div>
             </MuiThemeProvider>
         );
@@ -203,7 +209,7 @@ class _MainLayout extends React.Component<any, any> {
         const linkTitle = `${classes.linkTitle} ${drawerNav ? classes.drawerLinkTitle : ""}`;
         const closeMenu = drawerNav ? (
             <div className={classes.drawerMenu}>
-                {this.renderLogo()}
+                <Typography className={classes.menu} variant="h6">Menu</Typography>
                 <IconButton onClick={this.toggleDrawerOpen} className={classes.hamburgerNav}>
                     <CloseIcon />
                 </IconButton>

@@ -5,3 +5,4 @@ export { default as ImageTransition } from "./ImageTransition";
 export { default as SEO } from "./SEO";
 export { default as ServicesCard } from "./ServicesCard";
 export { default as Footer } from "./Footer"
+export { default as Logo } from "./Logo"

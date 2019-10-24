@@ -28,7 +28,6 @@ class ImageTransition extends React.Component<any, any> {
     }
 
     public render() {
-        console.log(this.image.complete);
         const style = Object.assign({}, this.props.style || {}, this.state.imageLoaded ? styles.loaded : styles.loading);
 
         return (
