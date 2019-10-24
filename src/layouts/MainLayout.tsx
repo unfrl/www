@@ -19,13 +19,21 @@ import InvertColorsIcon from "@material-ui/icons/InvertColors";
 import { indigo, orange } from "@material-ui/core/colors";
 
 import logo from "../assets/logo.png";
-import { ContactButton } from "../components";
+import { ContactButton, Footer } from "../components";
+import { FooterType } from "../components/Footer";
 
 const styles: any = (theme: Theme) => ({
     "@global": {
         img: {
             maxWidth: "100%",
         },
+    },
+    root: {
+        // Note: this can be removed when the home page as enough content to push the footer to the bottom
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        minHeight: "100vh",
     },
     home: {
         textDecoration: "none",
@@ -96,8 +104,11 @@ const styles: any = (theme: Theme) => ({
         },
     },
     footer: {
-        paddingTop: theme.spacing(8),
+        marginTop: theme.spacing(4),
     },
+    menu: {
+        marginLeft: theme.spacing(3)
+    }
 });
 
 const links = [
@@ -137,42 +148,47 @@ class _MainLayout extends React.Component<any, any> {
 
         return (
             <MuiThemeProvider theme={theme}>
-                <CssBaseline />
-                <AppBar position="sticky" color="default">
-                    <div className={classes.headerContainer}>
-                        {this.renderLogo()}
-                        <Hidden smDown={true}>
-                            <nav className={classes.navBar}>
-                                {this.renderLinks()}
-                                <ContactButton style={{ marginLeft: 16 }} />
-                            </nav>
-                        </Hidden>
-                        <Hidden mdUp={true}>
-                            <div className={classes.row}>
-                                <ContactButton style={{ marginRight: 8 }} />
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="Menu"
-                                    className={classes.hamburgerNav}
-                                    onClick={this.toggleDrawerOpen}
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <AppBar position="sticky" color="default">
+                        <div className={classes.headerContainer}>
+                            {this.renderLogo()}
+                            <Hidden smDown={true}>
+                                <nav className={classes.navBar}>
+                                    {this.renderLinks()}
+                                    <ContactButton style={{ marginLeft: 16 }} />
+                                </nav>
+                            </Hidden>
+                            <Hidden mdUp={true}>
+                                <div className={classes.row}>
+                                    <ContactButton style={{ marginRight: 8 }} />
+                                    <IconButton
+                                        color="inherit"
+                                        aria-label="Menu"
+                                        className={classes.hamburgerNav}
+                                        onClick={this.toggleDrawerOpen}
+                                    >
+                                        <MenuIcon />
+                                    </IconButton>
+                                </div>
+                                <Drawer
+                                    anchor="right"
+                                    open={this.state.drawerOpen}
+                                    onClose={this.toggleDrawerOpen}
                                 >
-                                    <MenuIcon />
-                                </IconButton>
-                            </div>
-                            <Drawer
-                                anchor="right"
-                                open={this.state.drawerOpen}
-                                onClose={this.toggleDrawerOpen}
-                            >
-                                <nav className={classes.drawerNav}>{this.renderLinks(true)}</nav>
-                            </Drawer>
-                        </Hidden>
-                    </div>
-                </AppBar>
-                <Container maxWidth="lg" style={{ maxWidth: 1100 }}>
-                    {children}
-                </Container>
-                <footer className={classes.footer}></footer>
+                                    <nav className={classes.drawerNav}>
+                                        {this.renderLinks(true)}
+                                    </nav>
+                                    <Footer variant={FooterType.Drawer}></Footer>
+                                </Drawer>
+                            </Hidden>
+                        </div>
+                    </AppBar>
+                    <Container maxWidth="lg" style={{ maxWidth: 1100 }}>
+                        {children}
+                    </Container>
+                    <Footer className={classes.footer} variant={FooterType.Normal}></Footer>
+                </div>
             </MuiThemeProvider>
         );
     }
@@ -193,7 +209,7 @@ class _MainLayout extends React.Component<any, any> {
         const linkTitle = `${classes.linkTitle} ${drawerNav ? classes.drawerLinkTitle : ""}`;
         const closeMenu = drawerNav ? (
             <div className={classes.drawerMenu}>
-                {this.renderLogo()}
+                <Typography className={classes.menu} variant="h6">Menu</Typography>
                 <IconButton onClick={this.toggleDrawerOpen} className={classes.hamburgerNav}>
                     <CloseIcon />
                 </IconButton>
