@@ -59,20 +59,16 @@ const IndexPage: FunctionComponent = () => {
                 <Grid item xs={12} sm={6} className={classes.infoContainer}>
                     <Typography variant="h1" className={classes.infoTitle}>
                         Custom Software Design & Development
-                        </Typography>
-                    <Typography
-                        variant="body1"
-                        gutterBottom
-                        className={classes.infoDescription}
-                    >
+                    </Typography>
+                    <Typography variant="body1" gutterBottom className={classes.infoDescription}>
                         Software solutions built using the latest in web and mobile technologies
                         tailored to your company's needs.
-                        </Typography>
+                    </Typography>
                     <div className={classes.exploreServices}>
                         <Link to="/services" className={classes.link}>
                             <Button variant="contained" size="large" color="primary">
                                 Explore our Services
-                                </Button>
+                            </Button>
                         </Link>
                     </div>
                 </Grid>
