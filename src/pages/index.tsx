@@ -54,7 +54,7 @@ const IndexPage: FunctionComponent = () => {
 
     return (
         <MainLayout>
-            <SEO title="Home" />
+            <SEO />
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6} className={classes.infoContainer}>
                     <Typography variant="h1" className={classes.infoTitle}>

@@ -30,6 +30,7 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                 lang,
                             }}
                             title={title}
+                            defaultTitle="Unfrl"
                             titleTemplate={`%s | ${data.site.siteMetadata.title}`}
                             meta={[
                                 {
