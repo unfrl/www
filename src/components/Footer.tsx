@@ -1,11 +1,10 @@
-import { FunctionComponent, Fragment } from "react"
-import React from "react"
-import { makeStyles, useTheme, useMediaQuery, Grid, Typography, IconButton } from "@material-ui/core";
+import { FunctionComponent } from "react";
+import React from "react";
+import { makeStyles, useTheme, useMediaQuery, Grid, IconButton } from "@material-ui/core";
 import { Link } from "gatsby";
-import GitHubIcon from '@material-ui/icons/GitHub';
+import GitHubIcon from "@material-ui/icons/GitHub";
 
 import { Logo } from ".";
-
 
 const useStyles = makeStyles(theme => ({
     fullFooter: {
@@ -18,38 +17,38 @@ const useStyles = makeStyles(theme => ({
         right: 0,
         maxHeight: 80,
         backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[1],
+        boxShadow: `0 -2px 1px -2px #333`,
     },
     footerContainer: {
         paddingLeft: theme.spacing(4),
-        paddingRight: theme.spacing(4)
+        paddingRight: theme.spacing(4),
     },
     linkArea: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'center'
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
     },
     link: {
         textDecoration: "none",
         color: "inherit",
     },
     drawerFooter: {
-        position: 'absolute',
+        position: "absolute",
         bottom: 0,
-        width: '100%',
+        width: "100%",
         paddingLeft: theme.spacing(),
-        paddingRight: theme.spacing()
-    }
+        paddingRight: theme.spacing(),
+    },
 }));
 
 export enum FooterType {
     Normal,
-    Drawer
+    Drawer,
 }
 
 export interface IFooterProps {
-    variant: FooterType,
-    className?: any
+    variant: FooterType;
+    className?: any;
 }
 
 const Footer: FunctionComponent<IFooterProps> = props => {
@@ -61,15 +60,17 @@ const Footer: FunctionComponent<IFooterProps> = props => {
     if (variant == FooterType.Normal) {
         if (fullSize) {
             return (
-                <footer className={`${classes.fullFooter} ${className || ''}`}>
-                    <Grid className={classes.footerContainer}
+                <footer className={`${classes.fullFooter} ${className || ""}`}>
+                    <Grid
+                        className={classes.footerContainer}
                         container
                         justify="space-between"
-                        alignItems="center">
-                        <Grid item xs={3}>
+                        alignItems="center"
+                    >
+                        <Grid item xs={4}>
                             <Logo />
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={4}>
                             <div className={classes.linkArea}>
                                 <Link to="services" className={classes.link}>
                                     Services
@@ -80,29 +81,24 @@ const Footer: FunctionComponent<IFooterProps> = props => {
                                 <Link to="about" className={classes.link}>
                                     About
                                 </Link>
-                                <IconButton color="inherit" href="https://github.com/unfrl" >
+                                <IconButton color="inherit" href="https://github.com/unfrl">
                                     <GitHubIcon />
                                 </IconButton>
                             </div>
                         </Grid>
                     </Grid>
                 </footer>
-            )
+            );
         }
         //Even if it is small we want to render the empty footer so things using it, like layouts, can add a topmargin
-        return (
-            <footer className={className}></footer>
-        )
+        return <footer className={className}></footer>;
     }
 
     return (
         <div className={classes.drawerFooter}>
             <Logo />
         </div>
-    )
-
-}
-
-
+    );
+};
 
 export default Footer;
