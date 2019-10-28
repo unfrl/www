@@ -59,7 +59,7 @@ const About: FunctionComponent = () => {
                 <Grid item xs={12}>
                     <Card>
                         <CardHeader
-                            title="We're a Co-op!"
+                            title="We're a Co-op based in Salt Lake City, UT!"
                             subheader="Like a real one, where the workers own everything!"
                         />
                         <CardContent>
