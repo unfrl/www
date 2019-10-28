@@ -2,28 +2,27 @@ import { StaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import React from "react";
 
-const LOGO = 'https://i.imgur.com/tpUuWHc.png';
+const LOGO = "https://i.imgur.com/tpUuWHc.png";
 
 export interface ISEOProps {
-    description?: string,
-    lang?: string,
-    meta?: [],
-    keywords?: string[],
-    tite?: string,
-    title?: string
+    description?: string;
+    lang?: string;
+    meta?: [];
+    keywords?: string[];
+    tite?: string;
+    title?: string;
 }
 
 export default class SEO extends React.Component<ISEOProps, any> {
     render() {
         let { description, lang, meta, keywords, title } = this.props;
-        lang = lang || 'en';
+        lang = lang || "en";
         meta = meta || [];
         return (
             <StaticQuery
                 query={detailsQuery}
                 render={data => {
-                    const metaDescription =
-                        description || data.site.siteMetadata.description;
+                    const metaDescription = description || data.site.siteMetadata.description;
                     const metaTitle = data.site.siteMetadata.title || title;
                     return (
                         <Helmet
@@ -85,31 +84,64 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                 .concat(
                                     (data.site.siteMetadata.keywords || []).length > 0
                                         ? {
-                                            name: `keywords`,
-                                            content: [...data.site.siteMetadata.keywords, ...(keywords || [""])].join(`, `),
-                                        }
+                                              name: `keywords`,
+                                              content: [
+                                                  ...data.site.siteMetadata.keywords,
+                                                  ...(keywords || [""]),
+                                              ].join(`, `),
+                                          }
                                         : []
                                 )
                                 .concat(meta || [])}
                         >
-                            <link rel="preconnect icon" type="image/png" href={LOGO} sizes="16x16" />
+                            <link
+                                rel="preconnect icon"
+                                type="image/png"
+                                href={LOGO}
+                                sizes="16x16"
+                            />
+                            <script type="application/ld+json">{`
+                            {
+                                "@context": "https://schema.org",
+                                "@type": "Organization",
+                                "url": "https://unfrl.com",
+                                "logo": "https://i.imgur.com/tpUuWHc.png",
+                                "foundingDate": "2019",
+                                "founders": [
+                                {
+                                "@type": "Person",
+                                "name": "Andrew Noyes"
+                                },
+                                {
+                                "@type": "Person",
+                                "name": "Matthew Monahan"
+                                } ],
+                                "contactPoint": {
+                                "@type": "ContactPoint",
+                                "contactType": "sales",
+                                "email": "hello@unfrl.email"
+                                },
+                                "email": "hello@unfrl.email",
+                                "knowsAbout": ["software development", "Android", "iOS", "Windows"]
+                            }
+                        `}</script>
                         </Helmet>
-                    )
+                    );
                 }}
             />
-        )
+        );
     }
 }
 
 const detailsQuery = graphql`
-  query Default2SEOQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        keywords
-      }
+    query Default2SEOQuery {
+        site {
+            siteMetadata {
+                title
+                description
+                author
+                keywords
+            }
+        }
     }
-  }
-`
+`;
