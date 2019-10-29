@@ -4,8 +4,8 @@ import { CardHeader, Card, CardContent, Typography, Grid } from "@material-ui/co
 import { MainLayout } from "../layouts";
 import { PageHeader, SEO, Biography } from "../components";
 
-import androo from "../assets/androo.jpg";
-import matt from "../assets/matt.jpg";
+import androo from "../assets/androo-min.jpg";
+import matt from "../assets/matt-min.jpg";
 
 const biographies = [
     {
