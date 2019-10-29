@@ -1,8 +1,8 @@
 {
     "name": "unfrl-www",
     "version": "1.0.0",
-    "description": "Unfrl website vs.0 (done in Gatsby and Typescript)",
-    "author": "",
+    "description": "Unfrl Website (done in Gatsby and Typescript)",
+    "author": "Unfrl",
     "license": "MIT",
     "scripts": {
         "start": "gatsby develop",
