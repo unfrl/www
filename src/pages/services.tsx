@@ -17,6 +17,7 @@ import { withStyles } from "@material-ui/styles";
 import webapp_img from "../assets/undraw_website.svg";
 import mobileapp_img from "../assets/undraw_mobileapp_teardown.svg";
 import desktopapp_img from "../assets/undraw_desktop.svg";
+import undraw_hologram from "../assets/undraw_hologram.svg";
 import crossplatform_img from "../assets/undraw_device_sync.svg";
 
 const styles: any = (theme: Theme) => ({
@@ -188,6 +189,41 @@ class Services extends React.Component<any, any> {
                         <ImageTransition src={crossplatform_img} />
                     </Grid>
                 )}
+                <br />
+                {fullSize && (
+                    <Grid item xs={6}>
+                        <ImageTransition src={undraw_hologram} />
+                    </Grid>
+                )}
+                <Grid item xs={textSpacing}>
+                    <Card>
+                        <CardHeader
+                            title="Backend Applications"
+                            subheader="Integrate with your systems"
+                        />
+                        <div className={classes.cardContent}>
+                            <CardContent>
+                                {!fullSize && (
+                                    <CardMedia
+                                        component="img"
+                                        className={classes.cardImage}
+                                        image={undraw_hologram}
+                                        alt="backend application image"
+                                    />
+                                )}
+                                <Typography className={classes.description}>
+                                    Some companies already have complex systems deployed and need to
+                                    provide an API in front of them so that they can use their
+                                    capabilities in an app. Others have the ability to make their
+                                    own frontend applications but need assistance making a backend
+                                    that can support them at scale. Regardless of the scenario we
+                                    can help you build the systems you and your customers need.
+                                </Typography>
+                            </CardContent>
+                        </div>
+                    </Card>
+                </Grid>
+                <a className={classes.anchor} id="backend-systems"></a>
             </Grid>
         );
     };
