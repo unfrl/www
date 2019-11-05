@@ -8,10 +8,9 @@ import {
     CardHeader,
     CardContent,
     Grid,
-    useMediaQuery,
-    useTheme,
     Typography,
     CardMedia,
+    Hidden,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import webapp_img from "../assets/undraw_website.svg";
@@ -46,31 +45,29 @@ const styles: any = (theme: Theme) => ({
 
 class Services extends React.Component<any, any> {
     RenderSections = () => {
-        const theme = useTheme();
-        const fullSize = useMediaQuery(theme.breakpoints.up("sm"));
-        const textSpacing = fullSize ? 6 : 12;
         const { classes } = this.props;
+
         return (
             <Grid container spacing={3}>
-                {fullSize && (
-                    <Grid item xs={6}>
+                <Hidden smDown={true}>
+                    <Grid item md={6}>
                         <ImageTransition src={webapp_img} />
                     </Grid>
-                )}
+                </Hidden>
                 <a className={classes.anchor} id="web"></a>
-                <Grid item xs={textSpacing}>
+                <Grid item sm={12} md={6}>
                     <Card>
                         <CardHeader title="Web Apps" subheader="The future is web!" />
                         <div className={classes.cardContent}>
                             <CardContent>
-                                {!fullSize && (
+                                <Hidden mdUp={true}>
                                     <CardMedia
                                         component="img"
                                         className={classes.cardImage}
                                         image={webapp_img}
                                         alt="web app image"
                                     />
-                                )}
+                                </Hidden>
                                 <Typography className={classes.description}>
                                     Due to the increasing capabilities of browsers, Web Apps are now
                                     able to solve more problems than ever before. One of the major
@@ -90,19 +87,19 @@ class Services extends React.Component<any, any> {
                     </Card>
                 </Grid>
                 <br />
-                <Grid item xs={textSpacing}>
+                <Grid item sm={12} md={6}>
                     <Card>
                         <CardHeader title="Mobile Apps" subheader="Complex interactivity!" />
                         <div className={classes.cardContent}>
                             <CardContent>
-                                {!fullSize && (
+                                <Hidden mdUp={true}>
                                     <CardMedia
                                         component="img"
                                         className={classes.cardImage}
                                         image={mobileapp_img}
                                         alt="mobile app image"
                                     />
-                                )}
+                                </Hidden>
                                 <Typography className={classes.description}>
                                     These days almost no technology is as familiar to users as
                                     Mobile apps. User's commonly search the app store for solutions
@@ -120,30 +117,30 @@ class Services extends React.Component<any, any> {
                     </Card>
                 </Grid>
                 <a className={classes.anchor} id="mobile"></a>
-                {fullSize && (
-                    <Grid item xs={6}>
+                <Hidden smDown={true}>
+                    <Grid item md={6}>
                         <ImageTransition src={mobileapp_img} />
                     </Grid>
-                )}
+                </Hidden>
                 <br />
-                {fullSize && (
-                    <Grid item xs={6}>
+                <Hidden smDown={true}>
+                    <Grid item md={6}>
                         <ImageTransition src={desktopapp_img} />
                     </Grid>
-                )}
-                <Grid item xs={textSpacing}>
+                </Hidden>
+                <Grid item sm={12} md={6}>
                     <Card>
                         <CardHeader title="Desktop Apps" subheader="Powerful tooling!" />
                         <div className={classes.cardContent}>
                             <CardContent>
-                                {!fullSize && (
+                                <Hidden mdUp={true}>
                                     <CardMedia
                                         component="img"
                                         className={classes.cardImage}
                                         image={desktopapp_img}
                                         alt="desktop app image"
                                     />
-                                )}
+                                </Hidden>
                                 <Typography className={classes.description}>
                                     For some scenarios, such as deployments that might interact with
                                     on-site equipment, Desktop apps provide an easier workflow than
@@ -157,19 +154,19 @@ class Services extends React.Component<any, any> {
                 </Grid>
                 <a className={classes.anchor} id="desktop"></a>
                 <br />
-                <Grid item xs={textSpacing}>
+                <Grid item sm={12} md={6}>
                     <Card>
                         <CardHeader title="Cross Platform" subheader="Run anywhere!" />
                         <div className={classes.cardContent}>
                             <CardContent>
-                                {!fullSize && (
+                                <Hidden mdUp={true}>
                                     <CardMedia
                                         component="img"
                                         className={classes.cardImage}
                                         image={crossplatform_img}
                                         alt="desktop app image"
                                     />
-                                )}
+                                </Hidden>
                                 <Typography className={classes.description}>
                                     Cross-Platform apps let users interact with your app wherever
                                     they are. In many cases a Web app designed as a PWA will provide
@@ -184,18 +181,18 @@ class Services extends React.Component<any, any> {
                     </Card>
                 </Grid>
                 <a className={classes.anchor} id="cross-platform"></a>
-                {fullSize && (
-                    <Grid item xs={6}>
+                <Hidden smDown={true}>
+                    <Grid item md={6}>
                         <ImageTransition src={crossplatform_img} />
                     </Grid>
-                )}
+                </Hidden>
                 <br />
-                {fullSize && (
-                    <Grid item xs={6}>
+                <Hidden smDown={true}>
+                    <Grid item md={6}>
                         <ImageTransition src={undraw_hologram} />
                     </Grid>
-                )}
-                <Grid item xs={textSpacing}>
+                </Hidden>
+                <Grid item sm={12} md={6}>
                     <Card>
                         <CardHeader
                             title="Backend Applications"
@@ -203,14 +200,14 @@ class Services extends React.Component<any, any> {
                         />
                         <div className={classes.cardContent}>
                             <CardContent>
-                                {!fullSize && (
+                                <Hidden mdUp={true}>
                                     <CardMedia
                                         component="img"
                                         className={classes.cardImage}
                                         image={undraw_hologram}
                                         alt="backend application image"
                                     />
-                                )}
+                                </Hidden>
                                 <Typography className={classes.description}>
                                     Some companies already have complex systems deployed and need to
                                     provide an API in front of them so that they can use their
