@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center",
         padding: theme.spacing(4),
         marginTop: theme.spacing(4),
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("md")]: {
             marginTop: 0,
         },
     },
@@ -21,14 +21,14 @@ const useStyles = makeStyles(theme => ({
         fontSize: "2.5rem",
         textAlign: "center",
         marginBottom: theme.spacing(2),
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("md")]: {
             fontSize: "3rem",
             textAlign: "left",
         },
     },
     infoDescription: {
         textAlign: "center",
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("md")]: {
             textAlign: "left",
         },
     },
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         marginTop: theme.spacing(4),
         justifyContent: "center",
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("md")]: {
             justifyContent: "flex-start",
         },
     },
@@ -56,7 +56,7 @@ const IndexPage: FunctionComponent = () => {
         <MainLayout>
             <SEO />
             <Grid container spacing={3}>
-                <Grid item xs={12} sm={6} className={classes.infoContainer}>
+                <Grid item sm={12} md={6} className={classes.infoContainer}>
                     <Typography variant="h1" className={classes.infoTitle}>
                         Custom Software Design & Development
                     </Typography>
@@ -72,7 +72,7 @@ const IndexPage: FunctionComponent = () => {
                         </Link>
                     </div>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} md={6}>
                     <ImageTransition
                         alt="mobile-app-screenshot"
                         src={polestarMobile}
@@ -80,7 +80,6 @@ const IndexPage: FunctionComponent = () => {
                     />
                 </Grid>
             </Grid>
-
             <ServicesCard />
         </MainLayout>
     );

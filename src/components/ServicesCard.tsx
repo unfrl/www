@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from "react";
 import {
-    useTheme,
-    useMediaQuery,
     makeStyles,
     Paper,
     Grid,
@@ -9,6 +7,7 @@ import {
     BottomNavigation,
     BottomNavigationAction,
     Button,
+    Hidden,
 } from "@material-ui/core";
 import BuildIcon from "@material-ui/icons/Build";
 import WebIcon from "@material-ui/icons/Web";
@@ -64,67 +63,71 @@ const services = [
 
 const ServicesCard: FunctionComponent = () => {
     const classes = useStyles();
-    const theme = useTheme();
-    const fullSize = useMediaQuery(theme.breakpoints.up("sm"));
-
-    if (fullSize) {
-        return (
-            <Paper className={classes.card}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                        <div className={classes.services}>
-                            {services.map((service, index) => {
-                                const { Icon, Title, Destination } = service;
-                                return (
-                                    <Grid item xs key={Destination} className={classes.serviceItem}>
-                                        <Button
-                                            color="secondary"
-                                            onClick={() => {
-                                                navigate(Destination);
-                                            }}
-                                        >
-                                            <Icon fontSize="large" />
-                                        </Button>
-                                        <Typography
-                                            variant="caption"
-                                            className={classes.serviceTitle}
-                                        >
-                                            {Title}
-                                        </Typography>
-                                    </Grid>
-                                );
-                            })}
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Typography variant="h5" className={classes.cardTitle}>
-                            Any Project
-                        </Typography>
-                        <Typography className={classes.cardDescription}>
-                            Deployed how you want it
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Paper>
-        );
-    }
 
     return (
-        <BottomNavigation showLabels className={classes.bottomNav}>
-            {services.map((service, index) => {
-                const { Icon, Title, Destination } = service;
-                return (
-                    <BottomNavigationAction
-                        key={Destination}
-                        label={Title}
-                        icon={<Icon color="secondary" fontSize="small" />}
-                        onClick={() => {
-                            navigate(Destination);
-                        }}
-                    />
-                );
-            })}
-        </BottomNavigation>
+        <React.Fragment>
+            <Hidden smDown={true} implementation="css">
+                <Paper className={classes.card}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
+                            <div className={classes.services}>
+                                {services.map((service, index) => {
+                                    const { Icon, Title, Destination } = service;
+                                    return (
+                                        <Grid
+                                            item
+                                            xs
+                                            key={Destination}
+                                            className={classes.serviceItem}
+                                        >
+                                            <Button
+                                                color="secondary"
+                                                onClick={() => {
+                                                    navigate(Destination);
+                                                }}
+                                            >
+                                                <Icon fontSize="large" />
+                                            </Button>
+                                            <Typography
+                                                variant="caption"
+                                                className={classes.serviceTitle}
+                                            >
+                                                {Title}
+                                            </Typography>
+                                        </Grid>
+                                    );
+                                })}
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Typography variant="h5" className={classes.cardTitle}>
+                                Any Project
+                            </Typography>
+                            <Typography className={classes.cardDescription}>
+                                Deployed how you want it
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Paper>
+            </Hidden>
+            <Hidden mdUp={true} implementation="css">
+                <BottomNavigation showLabels className={classes.bottomNav}>
+                    {services.map((service, index) => {
+                        const { Icon, Title, Destination } = service;
+                        return (
+                            <BottomNavigationAction
+                                key={Destination}
+                                label={Title}
+                                icon={<Icon color="secondary" fontSize="small" />}
+                                onClick={() => {
+                                    navigate(Destination);
+                                }}
+                            />
+                        );
+                    })}
+                </BottomNavigation>
+            </Hidden>
+        </React.Fragment>
     );
 };
 

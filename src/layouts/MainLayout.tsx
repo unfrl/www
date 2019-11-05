@@ -107,8 +107,8 @@ const styles: any = (theme: Theme) => ({
         marginTop: theme.spacing(4),
     },
     menu: {
-        marginLeft: theme.spacing(3)
-    }
+        marginLeft: theme.spacing(3),
+    },
 });
 
 const links = [
@@ -153,13 +153,13 @@ class _MainLayout extends React.Component<any, any> {
                     <AppBar position="sticky" color="default">
                         <div className={classes.headerContainer}>
                             {this.renderLogo()}
-                            <Hidden smDown={true}>
+                            <Hidden smDown={true} implementation="css">
                                 <nav className={classes.navBar}>
                                     {this.renderLinks()}
                                     <ContactButton style={{ marginLeft: 16 }} />
                                 </nav>
                             </Hidden>
-                            <Hidden mdUp={true}>
+                            <Hidden mdUp={true} implementation="css">
                                 <div className={classes.row}>
                                     <ContactButton style={{ marginRight: 8 }} />
                                     <IconButton
@@ -209,7 +209,9 @@ class _MainLayout extends React.Component<any, any> {
         const linkTitle = `${classes.linkTitle} ${drawerNav ? classes.drawerLinkTitle : ""}`;
         const closeMenu = drawerNav ? (
             <div className={classes.drawerMenu}>
-                <Typography className={classes.menu} variant="h6">Menu</Typography>
+                <Typography className={classes.menu} variant="h6">
+                    Menu
+                </Typography>
                 <IconButton onClick={this.toggleDrawerOpen} className={classes.hamburgerNav}>
                     <CloseIcon />
                 </IconButton>

@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
         right: 0,
         maxHeight: 80,
         backgroundColor: theme.palette.background.paper,
-        boxShadow: `0 -2px 1px -2px #333`,
+        boxShadow: `0 -2px 1px -2px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)`,
     },
     footerContainer: {
         paddingLeft: theme.spacing(4),
