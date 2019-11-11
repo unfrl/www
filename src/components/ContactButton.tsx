@@ -39,7 +39,7 @@ const ContactButton: FunctionComponent<IContactButtonProps> = props => {
 
     return (
         <Hoverable>
-            <Button className={classes.callToAction} href="mailto:hello@unfrl.email" style={style}>
+            <Button className={classes.callToAction} href="mailto:hello@unfrl.com" style={style}>
                 Contact
             </Button>
         </Hoverable>

@@ -120,9 +120,9 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                 "contactPoint": {
                                 "@type": "ContactPoint",
                                 "contactType": "sales",
-                                "email": "hello@unfrl.email"
+                                "email": "hello@unfrl.com"
                                 },
-                                "email": "hello@unfrl.email",
+                                "email": "hello@unfrl.com",
                                 "knowsAbout": ["software development", "Android", "iOS", "Windows"]
                             }
                         `}</script>
