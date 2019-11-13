@@ -72,16 +72,20 @@ const Footer: FunctionComponent<IFooterProps> = props => {
                         </Grid>
                         <Grid item xs={4}>
                             <div className={classes.linkArea}>
-                                <Link to="services" className={classes.link}>
+                                <Link to="/services" className={classes.link}>
                                     Services
                                 </Link>
-                                <Link to="process" className={classes.link}>
+                                <Link to="/process" className={classes.link}>
                                     Process
                                 </Link>
-                                <Link to="about" className={classes.link}>
+                                <Link to="/about" className={classes.link}>
                                     About
                                 </Link>
-                                <IconButton color="inherit" href="https://github.com/unfrl">
+                                <IconButton
+                                    color="inherit"
+                                    href="https://github.com/unfrl"
+                                    aria-label="GitHub"
+                                >
                                     <GitHubIcon />
                                 </IconButton>
                             </div>

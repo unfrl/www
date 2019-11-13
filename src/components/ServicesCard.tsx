@@ -85,6 +85,7 @@ const ServicesCard: FunctionComponent = () => {
                                                 onClick={() => {
                                                     navigate(Destination);
                                                 }}
+                                                aria-label={Title}
                                             >
                                                 <Icon fontSize="large" />
                                             </Button>

@@ -49,7 +49,7 @@ const styles: any = (theme: Theme) => ({
     logo: {
         height: 30,
         marginRight: theme.spacing(),
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: 2,
     },
     headerContainer: {
         display: "flex",
@@ -229,7 +229,7 @@ class _MainLayout extends React.Component<any, any> {
                     </Link>
                 ))}
 
-                <IconButton onClick={this.toggleTheme}>
+                <IconButton onClick={this.toggleTheme} aria-label="Toggle Theme">
                     <InvertColorsIcon />
                 </IconButton>
             </React.Fragment>

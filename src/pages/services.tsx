@@ -38,7 +38,7 @@ const styles: any = (theme: Theme) => ({
     anchor: {
         display: "block",
         position: "relative",
-        top: "-50px",
+        top: "-60px",
         visibility: "hidden",
     },
 });
@@ -54,9 +54,9 @@ class Services extends React.Component<any, any> {
                         <ImageTransition src={webapp_img} />
                     </Grid>
                 </Hidden>
-                <a className={classes.anchor} id="web"></a>
                 <Grid item sm={12} md={6}>
                     <Card>
+                        <a className={classes.anchor} id="web"></a>
                         <CardHeader title="Web Apps" subheader="The future is web!" />
                         <div className={classes.cardContent}>
                             <CardContent>
@@ -89,6 +89,7 @@ class Services extends React.Component<any, any> {
                 <br />
                 <Grid item sm={12} md={6}>
                     <Card>
+                        <a className={classes.anchor} id="mobile"></a>
                         <CardHeader title="Mobile Apps" subheader="Complex interactivity!" />
                         <div className={classes.cardContent}>
                             <CardContent>
@@ -116,7 +117,6 @@ class Services extends React.Component<any, any> {
                         </div>
                     </Card>
                 </Grid>
-                <a className={classes.anchor} id="mobile"></a>
                 <Hidden smDown={true}>
                     <Grid item md={6}>
                         <ImageTransition src={mobileapp_img} />
@@ -130,6 +130,7 @@ class Services extends React.Component<any, any> {
                 </Hidden>
                 <Grid item sm={12} md={6}>
                     <Card>
+                        <a className={classes.anchor} id="desktop"></a>
                         <CardHeader title="Desktop Apps" subheader="Powerful tooling!" />
                         <div className={classes.cardContent}>
                             <CardContent>
@@ -152,10 +153,10 @@ class Services extends React.Component<any, any> {
                         </div>
                     </Card>
                 </Grid>
-                <a className={classes.anchor} id="desktop"></a>
                 <br />
                 <Grid item sm={12} md={6}>
                     <Card>
+                        <a className={classes.anchor} id="cross-platform"></a>
                         <CardHeader title="Cross Platform" subheader="Run anywhere!" />
                         <div className={classes.cardContent}>
                             <CardContent>
@@ -180,7 +181,6 @@ class Services extends React.Component<any, any> {
                         </div>
                     </Card>
                 </Grid>
-                <a className={classes.anchor} id="cross-platform"></a>
                 <Hidden smDown={true}>
                     <Grid item md={6}>
                         <ImageTransition src={crossplatform_img} />
