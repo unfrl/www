@@ -123,7 +123,17 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                 "email": "hello@unfrl.com"
                                 },
                                 "email": "hello@unfrl.com",
-                                "knowsAbout": ["software development", "Android", "iOS", "Windows"]
+                                "knowsAbout": ["software development", "Android", "iOS", "Windows"],
+                                "location": {
+                                    "@type": "Place",
+                                    "address": {
+                                        "@type": "PostalAddress",
+                                        "addressLocality": "Salt Lake City",
+                                        "addressRegion": "UT",
+                                        "postalCode": "84102"
+                                    },
+                                    "name": "Unfrl Headquarters"
+                                  }
                             }
                         `}</script>
                         </Helmet>
