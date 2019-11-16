@@ -133,7 +133,9 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                         "postalCode": "84102"
                                     },
                                     "name": "Unfrl Headquarters"
-                                  }
+                                },
+                                "description": "Custom Software Design & Development. Software solutions built using the latest in web and mobile technologies tailored to your company's needs.",
+                                "image": "https://i.imgur.com/tpUuWHc.png"
                             }
                         `}</script>
                         </Helmet>
