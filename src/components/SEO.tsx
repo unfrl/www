@@ -106,6 +106,7 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                 "@context": "https://schema.org",
                                 "@type": "Organization",
                                 "url": "https://unfrl.com",
+                                "name": "Unfrl",
                                 "logo": "https://i.imgur.com/tpUuWHc.png",
                                 "foundingDate": "2019",
                                 "founders": [
