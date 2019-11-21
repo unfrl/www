@@ -125,6 +125,47 @@ export default class SEO extends React.Component<ISEOProps, any> {
                                 },
                                 "email": "hello@unfrl.com",
                                 "knowsAbout": ["software development", "Android", "iOS", "Windows"],
+                                "hasOfferCatalog": {
+                                    "@type": "OfferCatalog",
+                                    "name": "Software Development Services",
+                                    "itemListElement": [
+                                      {
+                                        "@type": "Offer",
+                                        "itemOffered": {
+                                            "@type": "Service",
+                                            "name": "Web App Development"
+                                        }
+                                      },
+                                      {
+                                        "@type": "Offer",
+                                        "itemOffered": {
+                                            "@type": "Service",
+                                            "name": "Mobile App Development"
+                                        }
+                                      },
+                                      {
+                                        "@type": "Offer",
+                                        "itemOffered": {
+                                            "@type": "Service",
+                                            "name": "Desktop App Development"
+                                        }
+                                      },
+                                      {
+                                        "@type": "Offer",
+                                        "itemOffered": {
+                                            "@type": "Service",
+                                            "name": "Cross Platform App Development"
+                                        }
+                                      },
+                                      {
+                                        "@type": "Offer",
+                                        "itemOffered": {
+                                            "@type": "Service",
+                                            "name": "Backend Development"
+                                        }
+                                      }
+                                    ]
+                                },
                                 "location": {
                                     "@type": "Place",
                                     "address": {
