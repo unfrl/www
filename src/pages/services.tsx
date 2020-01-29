@@ -74,13 +74,13 @@ class Services extends React.Component<any, any> {
                                     perks of web apps is that customers can get a running instance
                                     of your product just by navigating to a page, no installation
                                     necessary. Furthermore technologies like Electron and
-                                    Progressive Web Apps (PWAs) have made it possible leverage the
-                                    benefits of Web Apps in a more traditional feeling package with
-                                    offline functionality. Using web-tech to build your app is one
-                                    of the easiest ways to maintain a high level of agility as well
-                                    as ensuring your clients are always using the latest version of
-                                    your app without annoying updates that interrupt their
-                                    productivity.
+                                    Progressive Web Apps (PWAs) have made it possible to leverage
+                                    the benefits of Web Apps in a more traditional feeling package
+                                    with offline functionality. Using web-tech to build your app is
+                                    one of the easiest ways to maintain a high level of agility as
+                                    well as ensuring your clients are always using the latest
+                                    version of your app without annoying updates that interrupt
+                                    their productivity.
                                 </Typography>
                             </CardContent>
                         </div>
