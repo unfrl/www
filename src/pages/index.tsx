@@ -77,6 +77,8 @@ const IndexPage: FunctionComponent = () => {
                         alt="mobile-app-screenshot"
                         src={polestarMobile}
                         className={classes.largeImage}
+                        width={442}
+                        height={373}
                     />
                 </Grid>
             </Grid>
