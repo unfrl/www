@@ -25,6 +25,7 @@ module.exports = {
                 // stylesProvider: {
                 //     injectFirst: true,
                 // },
+                pathToStylesProvider: " ",
             },
         },
         "gatsby-plugin-react-helmet",
