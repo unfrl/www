@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import { ImageTransition } from ".";
 import logo from "../assets/logo.png";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     logoContainer: {
         display: "flex",
         alignItems: "center",
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Logo: FunctionComponent = props => {
+const Logo: FunctionComponent = (props) => {
     const classes = useStyles();
     return (
         <Fragment>
@@ -35,7 +35,7 @@ const Logo: FunctionComponent = props => {
                     <Typography variant="subtitle2">Software Design & Development</Typography>
                 </div>
             </div>
-            <Typography variant="caption">© 2019 Unfrl LLC</Typography>
+            <Typography variant="caption">© {new Date().getFullYear()} Unfrl LLC</Typography>
         </Fragment>
     );
 };
