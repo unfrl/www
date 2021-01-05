@@ -12,23 +12,15 @@ const biographies = [
         name: "Andrew Noyes",
         image: androo,
         avatarSrc: "https://avatars0.githubusercontent.com/u/9619457?v=4.png",
+        title: "Worker owner",
         body: (
             <Fragment>
-                I took my first programming class in high school, developing a simple video game
-                using Microsoft Basic, and I hated it! Luckily, I rediscovered programming and
-                software development in college - this time no Basic was involved - and I loved it!
-                I went on to graduate with a B.S. in CIS.
-                <br />
-                <br />
                 What I love most about software, and technology in general, is the breadth of
                 industries it can be applied to solve problems. I've been fortunate enough to work
                 across a number of these industries from transmission line engineering to tinkering
-                with image cytometers in biotech.
-                <br />
-                <br />
-                These experiences taught me the importance of working with the user during planning,
-                design, and development. The best solutions are crafted iteratively with a
-                consistent feedback loop to ensure the end user's needs are being met and their
+                with image cytometers in biotech. These experiences taught me the importance of
+                working with the user during planning, design, and development. The best solutions
+                are crafted iteratively to ensure the end user's needs are being met and their
                 problems are <i>actually</i> being solved.
             </Fragment>
         ),
@@ -37,6 +29,7 @@ const biographies = [
         name: "Matthew Monahan",
         image: matt,
         avatarSrc: "https://avatars0.githubusercontent.com/u/6914238?v=4.png",
+        title: "Worker owner",
         body: (
             <Fragment>
                 I went into college planning on getting a Biology degree and working in a lab doing
@@ -80,7 +73,7 @@ const About: FunctionComponent = () => {
                         </CardContent>
                     </Card>
                 </Grid>
-                {biographies.map(biography => (
+                {biographies.map((biography) => (
                     <Grid item xs={12} sm={6} key={biography.name}>
                         <Biography {...biography} />
                     </Grid>

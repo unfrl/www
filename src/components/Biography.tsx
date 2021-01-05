@@ -9,7 +9,7 @@ import {
     makeStyles,
 } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     avatar: {
         height: 50,
         width: 50,
@@ -38,10 +38,10 @@ export interface IBiographyProps {
     image: any;
     avatarSrc: string;
     body: string | React.ReactNode;
-    title?: string;
+    title: string;
 }
 
-const Biography: FunctionComponent<IBiographyProps> = props => {
+const Biography: FunctionComponent<IBiographyProps> = (props) => {
     const classes = useStyles();
     const { name, image, avatarSrc, body, title } = props;
 
@@ -50,7 +50,7 @@ const Biography: FunctionComponent<IBiographyProps> = props => {
             <CardHeader
                 avatar={<Avatar className={classes.avatar} alt={name} src={avatarSrc} />}
                 title={name}
-                subheader={title || "Co-Founder"}
+                subheader={title}
             />
 
             <CardContent className={classes.content}>
