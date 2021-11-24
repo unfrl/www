@@ -1,47 +1,7 @@
-import React, { Fragment, FunctionComponent } from "react";
-import { CardHeader, Card, CardContent, Typography, Grid } from "@material-ui/core";
-
+import { Card, CardContent, CardHeader, Grid, Typography } from "@material-ui/core";
+import React, { FunctionComponent } from "react";
+import { PageHeader, SEO } from "../components";
 import { MainLayout } from "../layouts";
-import { PageHeader, SEO, Biography } from "../components";
-
-import androo from "../assets/androo-min.jpg";
-import matt from "../assets/matt-min.jpg";
-
-const biographies = [
-    {
-        name: "Andrew Noyes",
-        image: androo,
-        avatarSrc: "https://avatars0.githubusercontent.com/u/9619457?v=4.png",
-        title: "Worker owner",
-        body: (
-            <Fragment>
-                What I love most about software, and technology in general, is the breadth of
-                industries it can be applied to solve problems. I've been fortunate enough to work
-                across a number of these industries from transmission line engineering to tinkering
-                with image cytometers in biotech. These experiences taught me the importance of
-                working with the user during planning, design, and development. The best solutions
-                are crafted iteratively to ensure the end user's needs are being met and their
-                problems are <i>actually</i> being solved.
-            </Fragment>
-        ),
-    },
-    {
-        name: "Matthew Monahan",
-        image: matt,
-        avatarSrc: "https://avatars0.githubusercontent.com/u/6914238?v=4.png",
-        title: "Worker owner",
-        body: (
-            <Fragment>
-                I went into college planning on getting a Biology degree and working in a lab doing
-                what I assured myself would be important work. I have always loved computers and
-                helped run the Gaming and Programming club in High School but for some reason never
-                considered it a career path, that all changed after I took an intro CS course my
-                sophomore year. I loved the ideas and the ability to make tools to solve problems so
-                much I switched majors that semester and haven't looked back.
-            </Fragment>
-        ),
-    },
-];
 
 const About: FunctionComponent = () => {
     return (
@@ -73,11 +33,6 @@ const About: FunctionComponent = () => {
                         </CardContent>
                     </Card>
                 </Grid>
-                {biographies.map((biography) => (
-                    <Grid item xs={12} sm={6} key={biography.name}>
-                        <Biography {...biography} />
-                    </Grid>
-                ))}
             </Grid>
         </MainLayout>
     );
